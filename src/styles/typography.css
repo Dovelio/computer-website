@@ -1,0 +1,87 @@
+/* ========================================================
+   TYPOGRAPHY - WHITE & #20A7DB THEME
+   Editorial Display Serif + Clean Modern Sans-Serif
+   ======================================================== */
+
+:root {
+  --font-display: 'Bodoni Moda', 'Playfair Display', Didot, 'Times New Roman', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-text-primary);
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Hero Heading */
+.hero-display-title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 800;
+  font-size: clamp(2.35rem, 5vw, 4.1rem);
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  color: var(--color-brand-deep);
+  margin-bottom: 1.15rem;
+}
+
+.hero-display-title .highlight {
+  color: var(--color-brand);
+  font-style: italic;
+  position: relative;
+  display: inline-block;
+}
+
+/* Section Headings */
+.section-title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 700;
+  font-size: clamp(1.85rem, 3.5vw, 2.65rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  margin-bottom: 0.65rem;
+}
+
+.section-subtitle {
+  font-size: clamp(0.975rem, 1.5vw, 1.1rem);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+/* Small Category Overline Badge */
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-brand-dark);
+  background-color: var(--color-brand-light);
+  border: 1px solid var(--color-brand-border);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-pill);
+  margin-bottom: 0.75rem;
+}
+
+/* Paragraphs */
+p {
+  margin: 0 0 0.85rem;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
