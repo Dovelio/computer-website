@@ -18,7 +18,7 @@ export default function Footer() {
             <Link to="/" className="footer-logo">
               <div className="footer-logo-wrapper">
                 <img
-                  src="/logo.png"
+                  src={`${import.meta.env.BASE_URL}logo.png`}
                   alt={`${BUSINESS_INFO.shortName} Logo`}
                   className="footer-logo-img"
                   width="44"

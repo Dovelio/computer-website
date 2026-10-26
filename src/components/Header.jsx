@@ -89,7 +89,7 @@ export default function Header() {
           {/* Logo / Brand */}
           <Link to="/" className="brand-link" aria-label={`${BUSINESS_INFO.shortName} Homepage`}>
             <img
-              src="/logo.png"
+              src={`${import.meta.env.BASE_URL}logo.png`}
               alt={`${BUSINESS_INFO.shortName} Logo`}
               className="brand-logo-img"
               width="46"
@@ -164,7 +164,7 @@ export default function Header() {
         <div className="mobile-drawer-header">
           <Link to="/" className="brand-link" onClick={closeMenu} aria-label={`${BUSINESS_INFO.shortName} Homepage`}>
             <img
-              src="/logo.png"
+              src={`${import.meta.env.BASE_URL}logo.png`}
               alt={`${BUSINESS_INFO.shortName} Logo`}
               className="brand-logo-img"
               width="38"
