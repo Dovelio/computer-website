@@ -15,6 +15,7 @@ import {
 
 import serviceGovtImg from '../assets/images/service-govt.jpg';
 import serviceTravelImg from '../assets/images/service-travel.jpg';
+import serviceEducationImg from '../assets/images/service-education.jpg';
 import servicePrintingImg from '../assets/images/service-printing.jpg';
 import '../styles/home.css';
 
@@ -24,6 +25,7 @@ export default function HomePage() {
   const categoryImages = {
     govt: serviceGovtImg,
     travel: serviceTravelImg,
+    education: serviceEducationImg,
     printing: servicePrintingImg
   };
 
@@ -125,7 +127,7 @@ export default function HomePage() {
 
           <div style={{ textAlign: 'center', marginTop: '2.5rem' }}>
             <Link to="/services" className="btn btn-primary btn-lg">
-              <span>View All 22+ Digital Services</span>
+              <span>View All 35+ Professional Services</span>
               <Icon name="arrow-right" size={18} />
             </Link>
           </div>
@@ -260,7 +262,7 @@ export default function HomePage() {
                 </div>
                 <div className="checklist-point">
                   <Icon name="check-circle" size={16} />
-                  <span>Parking available along Colachel Road</span>
+                  <span>Parking available at Rajiv Junction, Karungal</span>
                 </div>
               </div>
 

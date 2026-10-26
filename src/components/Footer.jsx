@@ -16,8 +16,14 @@ export default function Footer() {
           {/* Brand & Bio */}
           <div className="footer-brand">
             <Link to="/" className="footer-logo">
-              <div className="footer-logo-icon">
-                <Icon name="shield-check" size={20} />
+              <div className="footer-logo-wrapper">
+                <img
+                  src="/logo.png"
+                  alt={`${BUSINESS_INFO.shortName} Logo`}
+                  className="footer-logo-img"
+                  width="44"
+                  height="44"
+                />
               </div>
               <span className="footer-brand-title">{BUSINESS_INFO.shortName}</span>
             </Link>
@@ -25,11 +31,6 @@ export default function Footer() {
             <p className="footer-desc">
               {BUSINESS_INFO.shortBio}
             </p>
-
-            <div className="footer-experience-tag">
-              <Icon name="award" size={15} />
-              <span>{BUSINESS_INFO.badge}</span>
-            </div>
           </div>
 
           {/* Quick Nav Links */}
@@ -43,15 +44,15 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/services" className="footer-link">
-                  <Icon name="chevron-right" size={14} />
-                  <span>All Services</span>
-                </Link>
-              </li>
-              <li>
                 <Link to="/about" className="footer-link">
                   <Icon name="chevron-right" size={14} />
                   <span>About Our Center</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/services" className="footer-link">
+                  <Icon name="chevron-right" size={14} />
+                  <span>All Services</span>
                 </Link>
               </li>
               <li>
@@ -68,39 +69,45 @@ export default function Footer() {
             <h4>Key Services</h4>
             <ul className="footer-links-list">
               <li>
-                <Link to="/services?cat=govt" className="footer-link">
+                <Link to="/services?cat=travel" className="footer-link">
                   <Icon name="chevron-right" size={14} />
-                  <span>Aadhaar Portal Assistance</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/services?cat=govt" className="footer-link">
-                  <Icon name="chevron-right" size={14} />
-                  <span>PAN Card Applications</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/services?cat=govt" className="footer-link">
-                  <Icon name="chevron-right" size={14} />
-                  <span>Passport Seva Appointments</span>
+                  <span>Passport & Visa Assistance</span>
                 </Link>
               </li>
               <li>
                 <Link to="/services?cat=travel" className="footer-link">
                   <Icon name="chevron-right" size={14} />
-                  <span>Bus & IRCTC Train Tickets</span>
+                  <span>Attestation & Visa Stamping</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/services?cat=travel" className="footer-link">
+                  <Icon name="chevron-right" size={14} />
+                  <span>Air, Train (IRCTC) & Bus Tickets</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/services?cat=education" className="footer-link">
+                  <Icon name="chevron-right" size={14} />
+                  <span>College Admissions & Counseling</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/services?cat=education" className="footer-link">
+                  <Icon name="chevron-right" size={14} />
+                  <span>Job Exams & Scholarships</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/services?cat=govt" className="footer-link">
+                  <Icon name="chevron-right" size={14} />
+                  <span>Aadhaar, PAN & CSC E-Sevai</span>
                 </Link>
               </li>
               <li>
                 <Link to="/services?cat=printing" className="footer-link">
                   <Icon name="chevron-right" size={14} />
                   <span>Laser Printing & Xerox</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/services?cat=printing" className="footer-link">
-                  <Icon name="chevron-right" size={14} />
-                  <span>Online Exam & Job Form Filing</span>
                 </Link>
               </li>
             </ul>
@@ -117,7 +124,13 @@ export default function Footer() {
               <div className="footer-contact-item">
                 <Icon name="phone" size={16} />
                 <span>
-                  Phone: <a href={`tel:${BUSINESS_INFO.phoneRaw}`}>{BUSINESS_INFO.phoneDisplay}</a>
+                  Mobile: <a href={`tel:${BUSINESS_INFO.phoneRaw}`}>{BUSINESS_INFO.phoneDisplay}</a>, <a href={`tel:${BUSINESS_INFO.phoneSecondaryRaw}`}>{BUSINESS_INFO.phoneSecondary}</a>
+                </span>
+              </div>
+              <div className="footer-contact-item">
+                <Icon name="phone" size={16} />
+                <span>
+                  Landline: <a href={`tel:${BUSINESS_INFO.phoneLandlineRaw}`}>{BUSINESS_INFO.phoneLandline}</a>
                 </span>
               </div>
               <div className="footer-contact-item">
@@ -140,21 +153,15 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Regulatory Disclaimer */}
-        <div className="footer-disclaimer-box">
-          <strong>Important Regulatory Disclaimer: </strong>
-          {BUSINESS_INFO.complianceNotice}
-        </div>
-
         {/* Bottom Bar */}
         <div className="footer-bottom">
           <span>
-            © {CURRENT_YEAR} {BUSINESS_INFO.shortName}. All rights reserved. Providing trusted digital guidance and printing services in Karungal.
+            © 2026 Jose Computer. All rights reserved. | Website by Dovelio.
           </span>
           <div className="footer-bottom-links">
             <Link to="/">Home</Link>
-            <Link to="/services">Services</Link>
             <Link to="/about">About Us</Link>
+            <Link to="/services">Services</Link>
             <Link to="/contact">Contact</Link>
           </div>
         </div>

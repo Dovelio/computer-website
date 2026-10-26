@@ -23,7 +23,7 @@ export default function ServicesPage() {
   const gridRef = useRef(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const rawCat = searchParams.get('cat') || 'all';
-  const activeCategory = ['all', 'govt', 'travel', 'printing'].includes(rawCat) ? rawCat : 'all';
+  const activeCategory = ['all', 'govt', 'travel', 'education', 'printing'].includes(rawCat) ? rawCat : 'all';
 
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -153,10 +153,10 @@ export default function ServicesPage() {
         <div className="container services-banner-content">
           <span className="section-badge">Comprehensive Catalog</span>
           <h1 className="page-hero-title">
-            Our Digital, Documentation & Computer Services
+            Our Digital, Travel, Education & Printing Services
           </h1>
           <p className="page-hero-subtitle">
-            Explore 22+ professional services across government documentation, online applications, travel ticketing, and high-speed laser printing in Karungal. Every service is backed by verified checklists and patient 1-on-1 assistance.
+            Explore 35+ professional services across government documentation, Jose Tours & Travels (Passport, Visa, Stamping, Attestation, Tickets), education admissions & competitive exams, and high-speed laser printing at Rajiv Junction, Karungal. Every service is backed by verified checklists and patient 1-on-1 assistance.
           </p>
         </div>
       </section>
@@ -189,7 +189,7 @@ export default function ServicesPage() {
                 <input
                   type="search"
                   className="services-search-input"
-                  placeholder="Search by keyword (e.g. Aadhaar, PAN, train, laser print, Xerox)..."
+                  placeholder="Search by keyword (e.g. Passport, Visa, Attestation, College, Aadhaar, PAN, train, laser print)..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   aria-label="Search all services"
@@ -242,7 +242,7 @@ export default function ServicesPage() {
             <Icon name="info" size={18} className="notice-icon" />
             <div>
               <strong>Service Availability: </strong>
-              All services listed above are available on a direct walk-in basis during regular store hours (8:00 AM – 8:30 PM). For complex applications requiring appointment slots (such as Passport PSK or Driving Licence tests), we provide same-day booking printouts.
+              All services listed above are available on a direct walk-in basis during regular store hours (9:00 AM – 9:00 PM). For complex applications requiring appointment slots (such as Passport PSK or Driving Licence tests), we provide same-day booking printouts.
             </div>
           </div>
         </div>

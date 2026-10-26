@@ -322,8 +322,9 @@
 .checklist-sidebar-card h3 {
   color: #ffffff;
   font-family: var(--font-display);
-  font-style: italic;
+  font-weight: 800;
   font-size: 1.65rem;
+  letter-spacing: -0.015em;
   margin-bottom: 0.85rem;
 }
 
@@ -369,8 +370,9 @@
 
 .home-cta-content h3 {
   font-family: var(--font-display);
-  font-style: italic;
+  font-weight: 800;
   font-size: clamp(1.5rem, 2.5vw, 2.15rem);
+  letter-spacing: -0.02em;
   color: var(--color-brand-deep);
   margin-bottom: 0.5rem;
 }

@@ -13,20 +13,49 @@ import {
 
 import '../styles/contactPage.css';
 
+/**
+ * Generates a simple random addition challenge for spam protection (e.g. 3 + 5, 7 + 2, 4 + 9)
+ */
+function generateMathCaptcha() {
+  const num1 = Math.floor(Math.random() * 9) + 1; // 1 to 9
+  const num2 = Math.floor(Math.random() * 9) + 1; // 1 to 9
+  const answer = num1 + num2;
+
+  return {
+    expression: `${num1} + ${num2}`,
+    answer
+  };
+}
+
 export default function ContactPage() {
   const pageRef = useRef(null);
 
   const [formData, setFormData] = useState({
     name: '',
+    email: '',
     phone: '',
     service: '',
-    preferredMode: 'WhatsApp',
-    message: ''
+    message: '',
+    _botField: ''
   });
+
+  const [captcha, setCaptcha] = useState(() => generateMathCaptcha());
+  const [captchaAnswer, setCaptchaAnswer] = useState('');
 
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
+
+  const handleRefreshCaptcha = () => {
+    setCaptcha(generateMathCaptcha());
+    setCaptchaAnswer('');
+    setErrors((prev) => {
+      const copy = { ...prev };
+      delete copy.captcha;
+      return copy;
+    });
+  };
 
   // GSAP Animations
   useEffect(() => {
@@ -75,6 +104,12 @@ export default function ContactPage() {
       }
     }
 
+    if (!formData.email.trim()) {
+      newErrors.email = 'Please enter your email address';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
+      newErrors.email = 'Please enter a valid email address';
+    }
+
     if (!formData.service) {
       newErrors.service = 'Please select the required service';
     }
@@ -83,6 +118,13 @@ export default function ContactPage() {
       newErrors.message = 'Please provide details or query regarding your requirement';
     } else if (formData.message.trim().length < 5) {
       newErrors.message = 'Message must be at least 5 characters long';
+    }
+
+    // Mathematical CAPTCHA validation (Simple addition)
+    if (!captchaAnswer.trim()) {
+      newErrors.captcha = 'Please solve the addition question';
+    } else if (parseInt(captchaAnswer.trim(), 10) !== captcha.answer) {
+      newErrors.captcha = 'Incorrect answer. Please solve the addition question.';
     }
 
     setErrors(newErrors);
@@ -100,33 +142,61 @@ export default function ContactPage() {
         return copy;
       });
     }
+
+    if (submitError) {
+      setSubmitError(null);
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validate()) return;
 
     setIsSubmitting(true);
-    setTimeout(() => {
+    setSubmitError(null);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || 'Failed to deliver enquiry email. Please call us directly or message via WhatsApp.');
+      }
+
       setIsSubmitting(false);
       setSubmitted(true);
-    }, 350);
+      handleRefreshCaptcha();
+    } catch (err) {
+      console.error('Contact form submission error:', err);
+      setIsSubmitting(false);
+      setSubmitError(err.message || 'Unable to send enquiry at this time. Please contact us directly by phone or WhatsApp.');
+    }
   };
 
   const handleReset = () => {
     setSubmitted(false);
+    setSubmitError(null);
     setFormData({
       name: '',
+      email: '',
       phone: '',
       service: '',
-      preferredMode: 'WhatsApp',
-      message: ''
+      message: '',
+      _botField: ''
     });
     setErrors({});
+    handleRefreshCaptcha();
   };
 
   const whatsappForwardUrl = getWhatsAppUrl(
-    `Hello, my name is ${formData.name}. Phone: ${formData.phone}. Service Needed: ${formData.service || 'General'}. Preferred Reply: ${formData.preferredMode}. Query Details: ${formData.message}`
+    `Hello, my name is ${formData.name}. Phone: ${formData.phone}. Email: ${formData.email || 'N/A'}. Service Needed: ${formData.service || 'General'}. Query Details: ${formData.message}`
   );
 
   return (
@@ -139,7 +209,7 @@ export default function ContactPage() {
             Contact {BUSINESS_INFO.name}
           </h1>
           <p className="page-hero-subtitle">
-            Located near Rajiv Junction on Colachel Road, Karungal, Kanyakumari. Walk in directly, give our desk a call, or submit an online enquiry below.
+            Located at Rajiv Junction, Karungal - 629157, Kanyakumari District. Walk in directly, call our desk, or submit an online enquiry below.
           </p>
         </div>
       </section>
@@ -148,14 +218,24 @@ export default function ContactPage() {
       <div className="container">
         <div className="contact-actions-grid">
           {/* Phone Call */}
-          <a href={`tel:${BUSINESS_INFO.phoneRaw}`} className="contact-action-card">
+          <div className="contact-action-card">
             <div className="contact-action-icon">
               <Icon name="phone" size={22} />
             </div>
-            <h3>Telephone / Mobile</h3>
-            <div className="contact-action-value">{BUSINESS_INFO.phoneDisplay}</div>
-            <p className="contact-action-desc">Immediate call assistance during shop operating hours</p>
-          </a>
+            <h3>Call Our Desk</h3>
+            <div className="contact-action-value">
+              <a href={`tel:${BUSINESS_INFO.phoneRaw}`} style={{ color: 'inherit', textDecoration: 'none', display: 'block' }}>
+                {BUSINESS_INFO.phoneDisplay}
+              </a>
+              <a href={`tel:${BUSINESS_INFO.phoneSecondaryRaw}`} style={{ color: 'inherit', textDecoration: 'none', display: 'block', fontSize: '0.88rem' }}>
+                {BUSINESS_INFO.phoneSecondary}
+              </a>
+              <a href={`tel:${BUSINESS_INFO.phoneLandlineRaw}`} style={{ color: 'inherit', textDecoration: 'none', display: 'block', fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>
+                Landline: {BUSINESS_INFO.phoneLandline}
+              </a>
+            </div>
+            <p className="contact-action-desc">Direct phone assistance during business hours</p>
+          </div>
 
           {/* WhatsApp */}
           <a
@@ -167,11 +247,14 @@ export default function ContactPage() {
             <div className="contact-action-icon">
               <Icon name="whatsapp" size={22} />
             </div>
-            <h3>WhatsApp Helpline</h3>
+            <h3>WhatsApp & Email</h3>
             <div className="contact-action-value" style={{ color: '#16a34a' }}>
               {BUSINESS_INFO.whatsappDisplay}
             </div>
-            <p className="contact-action-desc">Fastest reply for document checklists & file dispatches</p>
+            <div style={{ fontSize: '0.78rem', color: 'var(--color-text-muted)', marginBottom: '0.35rem', wordBreak: 'break-all' }}>
+              {BUSINESS_INFO.email}
+            </div>
+            <p className="contact-action-desc">Fast replies for document checklists & inquiries</p>
           </a>
 
           {/* Location */}
@@ -179,23 +262,26 @@ export default function ContactPage() {
             <div className="contact-action-icon">
               <Icon name="map-pin" size={22} />
             </div>
-            <h3>Center Address</h3>
+            <h3>Center Location</h3>
             <div className="contact-action-value" style={{ fontSize: '0.875rem' }}>
               {BUSINESS_INFO.address.line1}
             </div>
-            <p className="contact-action-desc">{BUSINESS_INFO.address.landmark}</p>
+            <p className="contact-action-desc">Karungal - 629157, Kanyakumari District</p>
           </div>
 
-          {/* Hours */}
+          {/* Hours & Management */}
           <div className="contact-action-card">
             <div className="contact-action-icon">
               <Icon name="clock" size={22} />
             </div>
-            <h3>Operating Hours</h3>
+            <h3>Proprietor & Hours</h3>
             <div className="contact-action-value" style={{ fontSize: '0.875rem' }}>
-              {BUSINESS_INFO.hours.weekdays}
+              {BUSINESS_INFO.proprietor}
             </div>
-            <p className="contact-action-desc">Sunday: 9:00 AM – 2:00 PM</p>
+            <p className="contact-action-desc">
+              {BUSINESS_INFO.hours.weekdays}<br />
+              Sunday: 9:00 AM – 2:00 PM
+            </p>
           </div>
         </div>
       </div>
@@ -214,19 +300,29 @@ export default function ContactPage() {
               <div className="form-demo-notice">
                 <Icon name="info" size={16} />
                 <span>
-                  <strong>Quick Assistance:</strong> You can submit this enquiry or forward it directly to our WhatsApp with 1 click.
+                  <strong>Quick Delivery:</strong> Your enquiry will be emailed directly to our desk and our team will get in touch promptly.
                 </span>
               </div>
+
+              {submitError && (
+                <div className="form-alert form-alert-error" role="alert" style={{ marginBottom: '1.25rem' }}>
+                  <Icon name="info" size={20} color="#b91c1c" />
+                  <div>
+                    <strong style={{ display: 'block', marginBottom: '0.2rem' }}>Could Not Send Email:</strong>
+                    <span>{submitError}</span>
+                  </div>
+                </div>
+              )}
 
               {submitted ? (
                 <div className="form-alert form-alert-success" role="status">
                   <Icon name="check-circle" size={24} />
                   <div>
                     <h4 style={{ margin: '0 0 0.35rem', color: '#166534', fontSize: '1.05rem' }}>
-                      Enquiry Recorded Successfully!
+                      Enquiry Sent Successfully!
                     </h4>
                     <p style={{ margin: '0 0 0.75rem', color: '#15803d', fontSize: '0.875rem' }}>
-                      Thank you, <strong>{formData.name}</strong>. Your enquiry for <strong>{formData.service}</strong> has been logged. For faster processing, you can also forward this exact message directly to our official WhatsApp.
+                      Thank you, <strong>{formData.name}</strong>. Your enquiry regarding <strong>{formData.service}</strong> has been emailed directly to our desk. We will review your requirements and respond promptly.
                     </p>
 
                     <div className="form-alert-actions">
@@ -237,7 +333,7 @@ export default function ContactPage() {
                         className="btn btn-whatsapp btn-sm"
                       >
                         <Icon name="whatsapp" size={16} />
-                        <span>Forward to WhatsApp</span>
+                        <span>Also Message on WhatsApp</span>
                       </a>
                       <button
                         type="button"
@@ -251,6 +347,18 @@ export default function ContactPage() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} noValidate>
+                  {/* Anti-spam honeypot field (hidden from users) */}
+                  <div style={{ display: 'none' }} aria-hidden="true">
+                    <input
+                      type="text"
+                      name="_botField"
+                      tabIndex="-1"
+                      autoComplete="off"
+                      value={formData._botField}
+                      onChange={handleChange}
+                    />
+                  </div>
+
                   {/* Full Name */}
                   <div className="form-group">
                     <label htmlFor="contact-name">
@@ -270,6 +378,25 @@ export default function ContactPage() {
                     {errors.name && <span className="form-error-msg">{errors.name}</span>}
                   </div>
 
+                  {/* Email Address */}
+                  <div className="form-group">
+                    <label htmlFor="contact-email">
+                      Email Address <span className="required-star">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      id="contact-email"
+                      name="email"
+                      className={`form-input ${errors.email ? 'input-error' : ''}`}
+                      placeholder="e.g. yourname@gmail.com"
+                      value={formData.email}
+                      onChange={handleChange}
+                      aria-required="true"
+                      aria-invalid={!!errors.email}
+                    />
+                    {errors.email && <span className="form-error-msg">{errors.email}</span>}
+                  </div>
+
                   {/* Phone */}
                   <div className="form-group">
                     <label htmlFor="contact-phone">
@@ -280,7 +407,7 @@ export default function ContactPage() {
                       id="contact-phone"
                       name="phone"
                       className={`form-input ${errors.phone ? 'input-error' : ''}`}
-                      placeholder="e.g. 9442256007"
+                      placeholder="e.g. 9442358907"
                       value={formData.phone}
                       onChange={handleChange}
                       aria-required="true"
@@ -304,15 +431,22 @@ export default function ContactPage() {
                       aria-invalid={!!errors.service}
                     >
                       <option value="">-- Select a Service --</option>
-                      <optgroup label="Government Documentation">
+                      <optgroup label="Government & CSC Documentation">
                         {SERVICES.filter((s) => s.category === 'govt').map((s) => (
                           <option key={s.id} value={s.title}>
                             {s.title}
                           </option>
                         ))}
                       </optgroup>
-                      <optgroup label="Travel & Ticket Booking">
+                      <optgroup label="Jose Tours & Travel Services">
                         {SERVICES.filter((s) => s.category === 'travel').map((s) => (
+                          <option key={s.id} value={s.title}>
+                            {s.title}
+                          </option>
+                        ))}
+                      </optgroup>
+                      <optgroup label="Education & Admission Services">
+                        {SERVICES.filter((s) => s.category === 'education').map((s) => (
                           <option key={s.id} value={s.title}>
                             {s.title}
                           </option>
@@ -327,43 +461,6 @@ export default function ContactPage() {
                       </optgroup>
                     </select>
                     {errors.service && <span className="form-error-msg">{errors.service}</span>}
-                  </div>
-
-                  {/* Preferred Reply Mode */}
-                  <div className="form-group">
-                    <label>Preferred Reply Mode</label>
-                    <div className="form-radio-row">
-                      <label className="form-radio-label">
-                        <input
-                          type="radio"
-                          name="preferredMode"
-                          value="WhatsApp"
-                          checked={formData.preferredMode === 'WhatsApp'}
-                          onChange={handleChange}
-                        />
-                        <span>WhatsApp Message</span>
-                      </label>
-                      <label className="form-radio-label">
-                        <input
-                          type="radio"
-                          name="preferredMode"
-                          value="Phone Call"
-                          checked={formData.preferredMode === 'Phone Call'}
-                          onChange={handleChange}
-                        />
-                        <span>Phone Call</span>
-                      </label>
-                      <label className="form-radio-label">
-                        <input
-                          type="radio"
-                          name="preferredMode"
-                          value="Walk-in Discussion"
-                          checked={formData.preferredMode === 'Walk-in Discussion'}
-                          onChange={handleChange}
-                        />
-                        <span>Walk-in Discussion</span>
-                      </label>
-                    </div>
                   </div>
 
                   {/* Message */}
@@ -383,6 +480,51 @@ export default function ContactPage() {
                       aria-invalid={!!errors.message}
                     />
                     {errors.message && <span className="form-error-msg">{errors.message}</span>}
+                  </div>
+
+                  {/* Anti-Spam Simple Addition CAPTCHA */}
+                  <div className="form-group captcha-form-group">
+                    <label htmlFor="contact-captcha">
+                      Spam Protection: Solve the simple addition <span className="required-star">*</span>
+                    </label>
+                    <div className="captcha-widget-row">
+                      <div className="captcha-display-badge" aria-label={`Addition question: ${captcha.expression} equals`}>
+                        <span className="captcha-equation">{captcha.expression}</span>
+                        <span className="captcha-equals">=</span>
+                      </div>
+                      <input
+                        type="number"
+                        id="contact-captcha"
+                        name="captcha"
+                        className={`form-input captcha-input ${errors.captcha ? 'input-error' : ''}`}
+                        placeholder="?"
+                        value={captchaAnswer}
+                        onChange={(e) => {
+                          setCaptchaAnswer(e.target.value);
+                          if (errors.captcha) {
+                            setErrors((prev) => {
+                              const copy = { ...prev };
+                              delete copy.captcha;
+                              return copy;
+                            });
+                          }
+                        }}
+                        aria-required="true"
+                        aria-invalid={!!errors.captcha}
+                        autoComplete="off"
+                      />
+                      <button
+                        type="button"
+                        className="btn-captcha-refresh"
+                        onClick={handleRefreshCaptcha}
+                        title="Generate a new addition question"
+                        aria-label="Refresh addition question"
+                      >
+                        <Icon name="refresh" size={15} />
+                        <span>Refresh</span>
+                      </button>
+                    </div>
+                    {errors.captcha && <span className="form-error-msg">{errors.captcha}</span>}
                   </div>
 
                   <button
@@ -436,8 +578,8 @@ export default function ContactPage() {
                   <div className="direction-item">
                     <Icon name="map-pin" size={16} />
                     <div>
-                      <strong>Landmark: </strong>
-                      Near Rajiv Junction, Colachel Road, Karungal, Kanyakumari - 629157.
+                      <strong>Address / Landmark: </strong>
+                      Rajiv Junction, Karungal - 629157, Kanyakumari District.
                     </div>
                   </div>
 

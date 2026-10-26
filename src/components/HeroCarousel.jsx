@@ -55,22 +55,22 @@ const BANNER_SLIDES = [
   },
   {
     id: 'banner-travel',
-    tabTitle: 'Travel & Ticket Booking',
-    tabIcon: 'map-pin',
-    tag: 'Instant Travel Ticketing',
-    title: 'Confirmed Train, Bus & Flight Bookings',
-    shortHook: 'IRCTC Tatkaal assistance, AC sleeper buses, and air tickets.',
-    highlights: ['IRCTC Train & Tatkaal Help', 'All Major Sleeper Buses', 'Instant Boarding Passes'],
+    tabTitle: 'Jose Tours & Travels',
+    tabIcon: 'compass',
+    tag: 'Jose Tours & Travels • Passport & Visa',
+    title: 'Passport, Visa, Attestation & Ticket Bookings',
+    shortHook: 'Passport Seva, Visa stamping, Attestation, Emigration, Flight & IRCTC train reservations.',
+    highlights: ['Passport & Visa Processing', 'Certificate Attestation & Stamping', 'Air, IRCTC Train & Bus Tickets'],
     primaryBtn: {
-      text: 'Book Travel Tickets',
+      text: 'Explore Travel Services',
       to: '/services?cat=travel'
     },
     secondaryBtn: {
-      text: 'Check Availability',
-      href: getWhatsAppUrl('Hello, I want to check train or bus ticket availability at Jose Computers.')
+      text: 'Travel Inquiries',
+      href: getWhatsAppUrl('Hello, I want to enquire about Passport, Visa, or Travel Tickets at Jose Tours & Travels Rajiv Junction Karungal.')
     },
     image: serviceTravelImg,
-    alt: 'Travel reservation counter, airline flight ticketing, and IRCTC train booking desk at Jose Computers'
+    alt: 'Travel reservation counter, visa assistance, passport filing, and flight/train ticketing desk at Jose Computers'
   }
 ];
 
@@ -381,7 +381,7 @@ export default function HeroCarousel() {
               </div>
               <div className="hero-bottom-text">
                 <span className="hero-bottom-label">Karungal Center</span>
-                <span className="hero-bottom-val">Colachel Road, Near Rajiv Junction</span>
+                <span className="hero-bottom-val">Rajiv Junction, Karungal - 629157</span>
               </div>
             </div>
 

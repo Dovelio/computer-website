@@ -102,6 +102,40 @@ export default function Icon({ name, size = 20, className = '', color = 'current
         <circle cx="12" cy="10" r="3" />
       </>
     ),
+    'stamp': (
+      <>
+        <path d="M5 22h14" />
+        <path d="M19.27 13.73A2.5 2.5 0 0 0 17.5 13h-11a2.5 2.5 0 0 0-1.77.73A2.5 2.5 0 0 0 4 15.5V18h16v-2.5a2.5 2.5 0 0 0-.73-1.77z" />
+        <path d="M14 13V8.5C14 7.12 13.1 6 12 6s-2 1.12-2 2.5V13" />
+        <circle cx="12" cy="4" r="2" />
+      </>
+    ),
+    'stethoscope': (
+      <>
+        <path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3" />
+        <path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4" />
+        <circle cx="20" cy="10" r="2" />
+      </>
+    ),
+    'graduation-cap': (
+      <>
+        <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+        <path d="M6 12v5c3 3 9 3 12 0v-5" />
+      </>
+    ),
+    'book-open': (
+      <>
+        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+      </>
+    ),
+    'shield-plus': (
+      <>
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+        <line x1="12" y1="9" x2="12" y2="15" />
+        <line x1="9" y1="12" x2="15" y2="12" />
+      </>
+    ),
 
     // Printing & Computer Services Icons
     'copy': (
@@ -263,6 +297,12 @@ export default function Icon({ name, size = 20, className = '', color = 'current
       <>
         <line x1="18" y1="6" x2="6" y2="18" />
         <line x1="6" y1="6" x2="18" y2="18" />
+      </>
+    ),
+    'refresh': (
+      <>
+        <path d="M23 4v6h-6" />
+        <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10" />
       </>
     ),
     'grid': (

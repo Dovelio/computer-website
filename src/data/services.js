@@ -1,12 +1,16 @@
 /**
  * Comprehensive Services & Business Catalog
  * Theme: Crisp White & #20A7DB Cyan Blue
+ * Brand: Jose Computers (Education, Insurance, E-Sevai, CSC, Aadhar Centre)
+ * Travel Division: Jose Tours & Travels
+ * Location: Rajiv Junction, Karungal - 629157
  */
 
 export const SERVICE_CATEGORIES = [
   { id: 'all', label: 'All Services', icon: 'grid' },
-  { id: 'govt', label: 'Government Documentation', icon: 'file-text' },
-  { id: 'travel', label: 'Travel & Ticketing', icon: 'compass' },
+  { id: 'govt', label: 'Government & CSC', icon: 'file-text' },
+  { id: 'travel', label: 'Travel Services', icon: 'compass' },
+  { id: 'education', label: 'Education Services', icon: 'graduation-cap' },
   { id: 'printing', label: 'Printing & Computer', icon: 'printer' }
 ];
 
@@ -14,19 +18,27 @@ export const SERVICE_CATEGORIES = [
 export const FEATURED_CATEGORIES = [
   {
     id: 'govt',
-    title: 'Government Documentation',
-    tag: 'Aadhaar • PAN • Passport • Certificates',
-    description: 'Expert, error-free guidance for government portal applications, renewals, and certified downloads.',
+    title: 'Government & E-Sevai Documentation',
+    tag: 'Aadhaar • PAN • CSC • E-District • Insurance',
+    description: 'Expert, error-free guidance for government portal applications, renewals, CSC schemes, and certified downloads.',
     imageKey: 'govt',
-    count: '10 Services'
+    count: '11 Services'
   },
   {
     id: 'travel',
-    title: 'Travel & Ticket Booking',
-    tag: 'Bus • Train • Domestic & International Flights',
-    description: 'Fast seat reservations, Tatkaal advisory, cancellation support, and instant boarding pass printouts.',
+    title: 'Jose Tours & Travel Services',
+    tag: 'Passport • Visa • Stamping • Attestation • Flight & Train',
+    description: 'Comprehensive international & domestic travel: Passport, Visa, Stamping, Attestation, Emigration, Medical, Flights & IRCTC train tickets.',
     imageKey: 'travel',
-    count: '4 Services'
+    count: '10 Services'
+  },
+  {
+    id: 'education',
+    title: 'Education & Admission Services',
+    tag: 'College Counseling • Job Exams • Scholarships',
+    description: 'Professional online counseling applications, competitive exam registrations, school/college scholarships, and university portal facilitation.',
+    imageKey: 'education',
+    count: '7 Services'
   },
   {
     id: 'printing',
@@ -55,13 +67,40 @@ export const POPULAR_HOME_SERVICES = [
     category: 'Government Documentation',
     turnaround: 'Same-Day Filing',
     icon: 'credit-card',
-    requirement: 'Aadhaar card & 2 passport photos',
+    requirement: 'Aadhaar card & passport photos',
     description: 'Fresh individual PAN, signature/photo updates, and instant e-PAN generation.'
+  },
+  {
+    id: 'passport-travel-service',
+    title: 'Passport Application & Slot Booking',
+    category: 'Travel Services',
+    turnaround: 'Instant Slot Slip',
+    icon: 'globe',
+    requirement: '10th certificate, Aadhaar, PAN & address proof',
+    description: 'Fresh passport online filing, normal and Tatkaal appointment booking at PSK / POPSK.'
+  },
+  {
+    id: 'visa-attestation-service',
+    title: 'Visa & Certificate Attestation',
+    category: 'Travel Services',
+    turnaround: 'End-to-End Tracking',
+    icon: 'award',
+    requirement: 'Original degrees/certificates & passport copy',
+    description: 'Tourist & visit visa filing, HRD, MEA Apostille, and Embassy attestation.'
+  },
+  {
+    id: 'college-admissions-service',
+    title: 'College Counseling & Admission Forms',
+    category: 'Education Services',
+    turnaround: 'Verified Submission',
+    icon: 'graduation-cap',
+    requirement: 'Marksheets, TC, community certificate & photo',
+    description: 'Online applications for Engineering (TNEA), Arts & Science, Polytechnic, and ITI counseling.'
   },
   {
     id: 'irctc-tickets',
     title: 'Train Ticket & Tatkaal Booking',
-    category: 'Travel & Ticketing',
+    category: 'Travel Services',
     turnaround: 'Instant Ticket Print',
     icon: 'train',
     requirement: 'Passenger names, age & ID details',
@@ -79,25 +118,16 @@ export const POPULAR_HOME_SERVICES = [
   {
     id: 'online-job-forms',
     title: 'Govt Job & Exam Form Filing',
-    category: 'Computer Services',
+    category: 'Education & Jobs',
     turnaround: 'Careful Verification',
     icon: 'clipboard-list',
     requirement: 'Marksheets, photo & signature',
-    description: 'Error-free application submissions for SSC, Banking, Police & State portals.'
-  },
-  {
-    id: 'revenue-certificates',
-    title: 'Community, Income & Nativity',
-    category: 'Government Documentation',
-    turnaround: 'Official E-District Filing',
-    icon: 'file-check',
-    requirement: 'Ration card, Aadhaar & address proof',
-    description: 'Online application for Tehsildar & revenue department legal certificates.'
+    description: 'Error-free application submissions for TNPSC, SSC, Banking, Police & Central portals.'
   }
 ];
 
 export const SERVICES = [
-  // ==================== GOVERNMENT SERVICES ====================
+  // ==================== GOVERNMENT & CSC SERVICES ====================
   {
     id: 'aadhaar-services',
     category: 'govt',
@@ -114,19 +144,9 @@ export const SERVICES = [
     title: 'PAN Card Application & Correction',
     tag: 'NSDL / UTI Portal',
     description: 'Fresh individual PAN card applications, name/DOB corrections, minor PAN, and instant e-PAN generation.',
-    requirements: 'Aadhaar card copy, 2 passport size photographs & signature',
+    requirements: 'Aadhaar card copy, passport size photographs & signature',
     turnaround: 'E-PAN in 48-72 hrs',
     icon: 'credit-card'
-  },
-  {
-    id: 'passport-services',
-    category: 'govt',
-    title: 'Passport Application & Renewal',
-    tag: 'Passport Seva',
-    description: 'Appointment slot booking at PSK/POPSK, document checklist verification, and Tatkaal application filing.',
-    requirements: '10th marksheet, Aadhaar card, PAN card & address proof',
-    turnaround: 'Slot booked instantly',
-    icon: 'globe'
   },
   {
     id: 'voter-id',
@@ -179,6 +199,16 @@ export const SERVICES = [
     icon: 'file-check'
   },
   {
+    id: 'insurance-services',
+    category: 'govt',
+    title: 'General & Vehicle Insurance Assistance',
+    tag: 'CSC & Insurance Facilitation',
+    description: 'Two-wheeler, car, and commercial vehicle insurance renewal, third-party and comprehensive policy issuance with instant printouts.',
+    requirements: 'Previous RC book copy & expired policy details',
+    turnaround: 'Instant policy certificate',
+    icon: 'shield-plus'
+  },
+  {
     id: 'govt-schemes',
     category: 'govt',
     title: 'Government Scheme Applications',
@@ -199,46 +229,178 @@ export const SERVICES = [
     icon: 'folder-check'
   },
 
-  // ==================== TRAVEL & TICKETING ====================
+  // ==================== TRAVEL SERVICES (JOSE TOURS & TRAVELS) ====================
+  {
+    id: 'passport-travel',
+    category: 'travel',
+    title: 'Passport Application, Renewal & Tatkaal',
+    tag: 'Passport Seva • PSK / POPSK',
+    description: 'Fresh passport online filing, appointment booking at PSK / POPSK, passport renewal, lost/damaged reissue, and police clearance certificate (PCC).',
+    requirements: '10th certificate, Aadhaar card, PAN card, active mobile & address proof',
+    turnaround: 'Slot booked immediately',
+    icon: 'globe'
+  },
+  {
+    id: 'visa-services',
+    category: 'travel',
+    title: 'Visa Application & Assistance',
+    tag: 'Tourist, Visit & Work Visas',
+    description: 'Complete documentation and online visa application assistance for UAE, Saudi Arabia, Qatar, Oman, Kuwait, Singapore, Malaysia, UK, US, and Europe.',
+    requirements: 'Valid passport (6+ months), recent photograph (white background), flight itinerary & sponsor/travel details',
+    turnaround: 'Filing in 24-48 hrs',
+    icon: 'plane'
+  },
+  {
+    id: 'visa-stamping',
+    category: 'travel',
+    title: 'Visa Stamping & Endorsement',
+    tag: 'Embassy & Consulate Stamping',
+    description: 'Guidance and processing for embassy/consulate visa stamping, work visa endorsement, and family residence stamping through authorized channels.',
+    requirements: 'Original passport, visa approval copy, medical fitness report & authorized photos',
+    turnaround: 'Submission receipt & tracking',
+    icon: 'stamp'
+  },
+  {
+    id: 'attestation-services',
+    category: 'travel',
+    title: 'Certificate & Document Attestation',
+    tag: 'HRD, MEA Apostille & Embassy',
+    description: 'State HRD, Ministry of External Affairs (MEA) Apostille, and Embassy attestation for educational degrees, marriage certificates, birth certificates, and commercial documents.',
+    requirements: 'Original certificates, passport copy & authorization letter',
+    turnaround: 'End-to-end tracking receipt',
+    icon: 'award'
+  },
+  {
+    id: 'emigration-services',
+    category: 'travel',
+    title: 'Emigration Clearance (ECR / ECNR)',
+    tag: 'eMigrate & POE Facilitation',
+    description: 'Online assistance for Protector of Emigrants (POE) clearance, eMigrate portal registration, insurance verification, and overseas worker clearance.',
+    requirements: 'Passport (ECR category), employment contract/visa, Pravasi insurance & photo',
+    turnaround: 'Official portal submission',
+    icon: 'folder-check'
+  },
+  {
+    id: 'travel-medical',
+    category: 'travel',
+    title: 'Travel Medical Examination (GAMCA)',
+    tag: 'GAMCA / Authorized Clinic Appointments',
+    description: 'GAMCA medical slip generation, GCC approved medical test appointment scheduling, clinic coordination, and digital medical fit certificate assistance.',
+    requirements: 'Original passport, visa copy & recent passport photos',
+    turnaround: 'Immediate appointment slip',
+    icon: 'stethoscope'
+  },
+  {
+    id: 'flight-booking',
+    category: 'travel',
+    title: 'Air Ticket Booking (Domestic & International)',
+    tag: 'Worldwide Flights & Web Check-In',
+    description: 'Competitive flight fares for Gulf, Southeast Asia, domestic and global routes, extra baggage addition, seat selection, and boarding pass printout.',
+    requirements: 'Full name as per passport/ID, preferred travel dates & contact number',
+    turnaround: 'Instant e-ticket & tax invoice',
+    icon: 'plane'
+  },
+  {
+    id: 'train-booking',
+    category: 'travel',
+    title: 'Train Ticket & Tatkaal Booking',
+    tag: 'IRCTC Authorized Assistance',
+    description: 'Confirmed train reservations across 1A, 2A, 3A, CC, SL classes, Tatkaal advisory, cancellation processing, and instant PNR status updates.',
+    requirements: 'Passenger names, ages, berth preference & government ID details',
+    turnaround: 'Instant printed ticket',
+    icon: 'train'
+  },
   {
     id: 'bus-booking',
     category: 'travel',
     title: 'Bus Ticket Booking',
     tag: 'RTC & Private Operators',
-    description: 'Seat reservations for government RTCs and private AC sleeper/semi-sleeper buses with instant SMS confirmation.',
+    description: 'Seat reservations for government RTCs and private AC sleeper/semi-sleeper buses across Tamil Nadu, Kerala, Bangalore, and Chennai.',
     requirements: 'Passenger full names, contact mobile & preferred boarding point',
     turnaround: 'Instant ticket printout',
     icon: 'bus'
-  },
-  {
-    id: 'train-booking',
-    category: 'travel',
-    title: 'Train Ticket Booking',
-    tag: 'IRCTC Assistance',
-    description: 'Train reservations across all classes (1A, 2A, 3A, SL), Tatkaal booking guidance, PNR inquiry, and refund processing.',
-    requirements: 'Passenger names, age, berth preference & government ID details',
-    turnaround: 'Instant reservation slip',
-    icon: 'train'
-  },
-  {
-    id: 'flight-booking',
-    category: 'travel',
-    title: 'Flight Ticket Booking',
-    tag: 'Domestic & International',
-    description: 'Affordable domestic and international air ticketing, baggage addition, seat selection, and web check-in printouts.',
-    requirements: 'Full legal name as per government ID/passport & travel dates',
-    turnaround: 'Instant e-ticket & invoice',
-    icon: 'plane'
   },
   {
     id: 'other-travel',
     category: 'travel',
     title: 'Travel Packages & Cab Bookings',
     tag: 'Hotels & Outstation Cabs',
-    description: 'Family hotel reservations, pilgrimage darshan bookings, and verified outstation cab coordination.',
+    description: 'Family hotel reservations, pilgrimage darshan bookings, airport pickup/drop cabs, and verified outstation cab coordination.',
     requirements: 'Destination details, passenger count & travel dates',
     turnaround: 'Same-day confirmation',
     icon: 'map-pin'
+  },
+
+  // ==================== EDUCATION SERVICES ====================
+  {
+    id: 'college-admissions',
+    category: 'education',
+    title: 'School & College Online Admissions',
+    tag: 'TNEA Engineering, Arts & Medical Counseling',
+    description: 'Complete online application filing for Engineering (TNEA), Arts & Science colleges, Medical (NEET counseling registration), Polytechnic, ITI, and B.Ed admissions.',
+    requirements: '10th & 12th marksheets, Transfer Certificate (TC), Community Certificate & Aadhaar',
+    turnaround: 'Verified submission & printout',
+    icon: 'graduation-cap'
+  },
+  {
+    id: 'competitive-exams',
+    category: 'education',
+    title: 'Competitive Exam & Govt Job Form Filing',
+    tag: 'UPSC, TNPSC, SSC, Banking, Police',
+    description: 'Error-free online application submissions for TNPSC (Group 1, 2, 4), UPSC, SSC (CGL, CHSL), Banking (IBPS, SBI), Railways (RRB), TRB, TET, and Police recruitment.',
+    requirements: 'Educational certificates, scanned passport photo, signature & Aadhaar',
+    turnaround: 'Complete verification before submit',
+    icon: 'clipboard-list'
+  },
+  {
+    id: 'scholarship-services',
+    category: 'education',
+    title: 'Student Scholarship Online Applications',
+    tag: 'NSP, Post-Matric & State Scholarships',
+    description: 'Filing for National Scholarship Portal (NSP), Post-Matric & Pre-Matric scholarships, First Graduate fee concession, Minority scholarships, and welfare board grants.',
+    requirements: 'Income certificate, community certificate, bank passbook (Aadhaar-linked), marksheet & fee receipt',
+    turnaround: 'Official portal receipt',
+    icon: 'heart-handshake'
+  },
+  {
+    id: 'distance-education',
+    category: 'education',
+    title: 'Distance Education & University Services',
+    tag: 'MSU, Annamalai, IGNOU, MKU',
+    description: 'Enrollment assistance, distance degree admission forms, semester exam applications, fee payments, and study material coordination for regional and open universities.',
+    requirements: 'Previous educational certificates, TC, ID proof & recent photos',
+    turnaround: 'Same-day filing & acknowledgement',
+    icon: 'book-open'
+  },
+  {
+    id: 'hall-tickets',
+    category: 'education',
+    title: 'Admit Card & Exam Result Downloads',
+    tag: 'Instant Hall Tickets & Scorecards',
+    description: 'Fast retrieval and crisp laser printing of exam admit cards, hall tickets, rank cards, entrance exam results, and college allotment orders.',
+    requirements: 'Registration number / Roll number & Date of Birth / password',
+    turnaround: 'Instant print in 2 minutes',
+    icon: 'download-cloud'
+  },
+  {
+    id: 'educational-certificates',
+    category: 'education',
+    title: 'Student Certificate Documentation',
+    tag: 'First Graduate, Nativity, Bonafide',
+    description: 'Online applications for First Graduate Certificate, Community, Nativity & Income certificates required for school/college counseling and fee waivers.',
+    requirements: 'Ration card, parents’ educational proofs, Aadhaar cards & school certificates',
+    turnaround: 'CAN number & revenue acknowledgement',
+    icon: 'file-check'
+  },
+  {
+    id: 'computer-literacy',
+    category: 'education',
+    title: 'Computer Literacy & Digital Training Guidance',
+    tag: 'MS Office, Typing & Digital Skills',
+    description: 'Guidance and practice assistance for basic computer fundamentals, MS Office (Word, Excel, PowerPoint), Tamil & English keyboard typing, and internet awareness.',
+    requirements: 'Open to students, job seekers, and beginners',
+    turnaround: 'Personal orientation available',
+    icon: 'layers'
   },
 
   // ==================== PRINTING & COMPUTER SERVICES ====================
@@ -327,7 +489,7 @@ export const SERVICES = [
 // Document Checklist Reference Guide for Services Page
 export const SERVICE_CHECKLISTS = [
   {
-    category: 'Government Documentation',
+    category: 'Government & E-Sevai Documentation',
     icon: 'file-text',
     items: [
       {
@@ -339,8 +501,8 @@ export const SERVICE_CHECKLISTS = [
         documents: ['Aadhaar Card (name and DOB must match)', '2 identical color passport photos (recent)', 'Mobile number for e-sign verification']
       },
       {
-        service: 'Passport Seva Booking',
-        documents: ['10th Standard Marks Card (for Non-ECR)', 'Aadhaar Card & PAN Card', 'Bank Passbook / Rent Agreement for current address']
+        service: 'Vehicle & General Insurance Renewal',
+        documents: ['Vehicle Registration Certificate (RC copy)', 'Previous expired/active insurance policy copy', 'Owner Aadhaar/PAN details']
       },
       {
         service: 'E-District Revenue Certificates',
@@ -349,20 +511,46 @@ export const SERVICE_CHECKLISTS = [
     ]
   },
   {
-    category: 'Travel & Ticket Booking',
+    category: 'Jose Tours & Travel Services',
     icon: 'compass',
     items: [
       {
-        service: 'Train Ticket / Tatkaal Booking',
-        documents: ['Passenger full names and exact ages', 'Berth preferences (Lower, Middle, Upper, Side)', 'Aadhaar / Driving Licence numbers for verification']
+        service: 'Passport Application & Renewal',
+        documents: ['10th Standard Marks Card (for Non-ECR status)', 'Original Aadhaar Card & PAN Card', 'Bank Passbook / Rent Agreement for address proof']
       },
       {
-        service: 'Bus Ticket Reservation',
-        documents: ['Travel date & destination city', 'Preferred boarding point and operator preference', 'Active mobile number for immediate SMS ticket link']
+        service: 'Visa & Visa Stamping Assistance',
+        documents: ['Valid passport with minimum 6 months validity', 'Recent color photographs with white background (specific size)', 'Job offer / invitation letter / flight booking itinerary']
       },
       {
-        service: 'Domestic / International Flights',
-        documents: ['Government ID matching passenger names exactly', 'Valid Passport with 6+ months validity for international flights', 'Cabin/Check-in baggage requirement preference']
+        service: 'Certificate Attestation & Emigration',
+        documents: ['Original Degree, Diploma or Marriage/Birth certificate', 'Passport copy of applicant', 'Employment visa & Pravasi insurance for ECR clearance']
+      },
+      {
+        service: 'Air & IRCTC Train Tickets',
+        documents: ['Full passenger names as per government ID', 'Exact travel dates, preferred times & destination city', 'Berth or seat preferences & active contact mobile']
+      }
+    ]
+  },
+  {
+    category: 'Education & Admission Services',
+    icon: 'graduation-cap',
+    items: [
+      {
+        service: 'College & University Counseling (TNEA, Arts, Medical)',
+        documents: ['10th and 12th standard original marksheets', 'Transfer Certificate (TC) & Conduct Certificate', 'Community Certificate & First Graduate Certificate (if applicable)', 'Recent passport size photos']
+      },
+      {
+        service: 'Competitive Exam & Govt Job Form Filing',
+        documents: ['Degree / educational marksheets from 10th to graduation', 'Community/Caste certificate for quota claim', 'Scanned passport photo & signature meeting size requirements']
+      },
+      {
+        service: 'Student Scholarships (NSP, Post-Matric)',
+        documents: ['Current year fee receipt & college ID card', 'Income certificate of parent / guardian', 'Aadhaar-linked bank passbook showing IFSC code', 'Previous year marksheets']
+      },
+      {
+        service: 'Distance Education Admissions',
+        documents: ['Original or provisional marksheets of qualifying exam', 'ID proof (Aadhaar/Voter ID)', 'Passport size photographs']
       }
     ]
   },
@@ -375,12 +563,12 @@ export const SERVICE_CHECKLISTS = [
         documents: ['Digital file in PDF, DOCX, or JPEG', 'Bring via USB pendrive, or email to our center address', 'Or send directly to our official WhatsApp helpline']
       },
       {
-        service: 'Online Exam & Job Applications',
-        documents: ['Educational marksheets from 10th to degree', 'Community/Caste certificate if claiming reservation', 'Recent passport photo & signature on clean white paper']
-      },
-      {
         service: 'Document Scanning & Digitization',
         documents: ['Original certificates without creases', 'Mention required file size (e.g. under 200KB for portal uploads)', 'Choose single PDF or individual JPEG files']
+      },
+      {
+        service: 'Passport Photos & Lamination',
+        documents: ['Walk in directly for instant studio portrait capture', 'Or bring soft copy photograph on phone/USB for photo sheet prints', 'Original marksheets for thermal heat lamination']
       }
     ]
   }
@@ -388,8 +576,8 @@ export const SERVICE_CHECKLISTS = [
 
 // Center Milestones & Values for About Page
 export const ABOUT_MILESTONES = [
-  { value: '10+', label: 'Years in Service', hint: 'Serving our community continuously since 2014' },
-  { value: '25,000+', label: 'Applications Handled', hint: 'Error-free submissions across state and central portals' },
+  { value: '10+', label: 'Years in Service', hint: 'Serving our community at Rajiv Junction since 2014' },
+  { value: '30,000+', label: 'Applications Handled', hint: 'Error-free submissions across government, travel & education portals' },
   { value: '100%', label: 'Data Confidentiality', hint: 'Zero retention policy for personal files and IDs' },
   { value: '6 Days', label: 'Open Weekly', hint: 'Monday to Saturday with extended evening hours' }
 ];
@@ -404,7 +592,7 @@ export const ABOUT_VALUES = [
   {
     id: 'patience',
     title: 'Patient 1-on-1 Guidance',
-    description: 'Government portals and online tests can be confusing. We sit with you to verify every spelling, date of birth, and requirement before clicking final submission.',
+    description: 'Government, travel, and university portals can be confusing. We sit with you to verify every spelling, date of birth, and requirement before clicking final submission.',
     icon: 'user-check'
   },
   {
@@ -429,3 +617,4 @@ export const ABOUT_EQUIPMENT = [
   { name: 'Dual-Monitor Staff Stations', detail: 'Side-by-side screens allowing customers to review their entered details in real time before submission.' },
   { name: 'Inverter & Battery Backup', detail: 'Reliable uninterrupted power ensuring work continues seamlessly during sudden power outages.' }
 ];
+

@@ -88,7 +88,7 @@ export default function AboutPage() {
       {/* 1. Page Header Banner (No Breadcrumbs) */}
       <section className="page-hero-banner" aria-label="About Page Introduction">
         <div className="container about-banner-content">
-          <span className="section-badge">{BUSINESS_INFO.badge}</span>
+          <span className="section-badge">About Our Center</span>
           <h1 className="page-hero-title">
             Bridging the Digital Divide with Patient, Dependable Service
           </h1>
@@ -133,7 +133,7 @@ export default function AboutPage() {
               </p>
 
               <p className="about-story-paragraph">
-                In 2014, we opened our doors near Rajiv Junction to change that. Instead of treating customers like numbers in a queue, we sit with every individual side-by-side. We verify every name spelling against your original ID cards, ensure passport photos meet exact dimension requirements, and make sure that you walk out with verified acknowledgement receipts.
+                In 2014, we opened our doors at Rajiv Junction, Karungal to change that. Instead of treating customers like numbers in a queue, we sit with every individual side-by-side. We verify every name spelling against your original ID cards, ensure passport photos meet exact dimension requirements, and make sure that you walk out with verified acknowledgement receipts.
               </p>
 
               <p className="about-story-paragraph">
@@ -205,13 +205,13 @@ export default function AboutPage() {
           {/* Founder Commitment Quote Box */}
           <div className="about-quote-box">
             <div className="about-quote-text">
-              “Our promise is simple: we never rush an application. We understand how important a job form, pension update, or train ticket is to your family. If something is unclear, we take the extra five minutes to verify it with you before clicking submit.”
+              “Our promise is simple: we never rush an application. We understand how important a job form, passport slot, student admission, or travel ticket is to your family. If something is unclear, we take the extra time to verify it with you before clicking submit.”
             </div>
             <div className="about-quote-author">
-              <div className="about-quote-avatar">JC</div>
+              <div className="about-quote-avatar">TJ</div>
               <div>
-                <div className="about-quote-name">Centre Operations & Senior Technician</div>
-                <div className="about-quote-role">{BUSINESS_INFO.name} • Serving Karungal Since 2014</div>
+                <div className="about-quote-name">{BUSINESS_INFO.proprietor}</div>
+                <div className="about-quote-role">{BUSINESS_INFO.name} & {BUSINESS_INFO.travelDivisionName} • Rajiv Junction, Karungal</div>
               </div>
             </div>
           </div>
@@ -258,7 +258,7 @@ export default function AboutPage() {
             <div className="home-cta-content">
               <h3>Have Questions or Need Assistance?</h3>
               <p>
-                Drop by our centre near Rajiv Junction, Colachel Road, Karungal, Kanyakumari, or chat with our technician on WhatsApp.
+                Drop by our centre at Rajiv Junction, Karungal - 629157, Kanyakumari District, or chat with our team on WhatsApp.
               </p>
             </div>
 

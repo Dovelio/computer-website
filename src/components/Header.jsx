@@ -45,8 +45,8 @@ export default function Header() {
 
   const navItems = [
     { to: '/', label: 'Home' },
-    { to: '/services', label: 'Services' },
     { to: '/about', label: 'About Us' },
+    { to: '/services', label: 'Services' },
     { to: '/contact', label: 'Contact' }
   ];
 
@@ -63,7 +63,7 @@ export default function Header() {
               </span>
               <span className="top-bar-item">
                 <Icon name="map-pin" size={14} />
-                <span>{BUSINESS_INFO.address.city}</span>
+                <span>Rajiv Junction, {BUSINESS_INFO.address.city}</span>
               </span>
             </div>
             <div className="top-bar-right">
@@ -88,12 +88,15 @@ export default function Header() {
         <div className="container header-main">
           {/* Logo / Brand */}
           <Link to="/" className="brand-link" aria-label={`${BUSINESS_INFO.shortName} Homepage`}>
-            <div className="brand-icon-box">
-              <Icon name="shield-check" size={24} color="#ffffff" />
-            </div>
+            <img
+              src="/logo.png"
+              alt={`${BUSINESS_INFO.shortName} Logo`}
+              className="brand-logo-img"
+              width="46"
+              height="46"
+            />
             <div className="brand-text-wrap">
               <span className="brand-title">{BUSINESS_INFO.shortName}</span>
-              <span className="brand-subtitle">{BUSINESS_INFO.badge}</span>
             </div>
           </Link>
 
@@ -159,12 +162,18 @@ export default function Header() {
         aria-modal="true"
       >
         <div className="mobile-drawer-header">
-          <div className="brand-text-wrap">
-            <span className="brand-title" style={{ fontSize: '1.05rem' }}>
+          <Link to="/" className="brand-link" onClick={closeMenu} aria-label={`${BUSINESS_INFO.shortName} Homepage`}>
+            <img
+              src="/logo.png"
+              alt={`${BUSINESS_INFO.shortName} Logo`}
+              className="brand-logo-img"
+              width="38"
+              height="38"
+            />
+            <span className="brand-title" style={{ fontSize: '1.1rem' }}>
               {BUSINESS_INFO.shortName}
             </span>
-            <span className="brand-subtitle">{BUSINESS_INFO.badge}</span>
-          </div>
+          </Link>
           <button
             type="button"
             className="mobile-close-btn"

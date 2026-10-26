@@ -145,11 +145,10 @@
 
 .hero-banner-title {
   font-family: var(--font-display);
-  font-style: italic;
   font-weight: 800;
   font-size: clamp(1.75rem, 3.2vw, 2.5rem);
   line-height: 1.18;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em;
   color: #ffffff;
   margin-bottom: 0.45rem;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);

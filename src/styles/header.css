@@ -85,6 +85,18 @@
   opacity: 0.92;
 }
 
+.brand-logo-img {
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.brand-link:hover .brand-logo-img {
+  transform: scale(1.06);
+}
+
 .brand-icon-box {
   width: 42px;
   height: 42px;
@@ -110,12 +122,11 @@
 
 .brand-title {
   font-family: var(--font-display);
-  font-style: italic;
   font-weight: 800;
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   line-height: 1.15;
   color: var(--color-brand-deep);
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em;
 }
 
 .brand-subtitle {
