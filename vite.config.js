@@ -1,3 +1,4 @@
+
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 import dotenv from 'dotenv'
@@ -14,9 +15,11 @@ function contactApiPlugin() {
       server.middlewares.use('/api/contact', (req, res) => {
         if (req.method === 'POST') {
           let body = ''
+
           req.on('data', (chunk) => {
             body += chunk
           })
+
           req.on('end', async () => {
             try {
               const { sendContactEmail } = await import('./server/mailHandler.js')
@@ -47,15 +50,17 @@ function contactApiPlugin() {
         } else {
           res.setHeader('Content-Type', 'application/json')
           res.statusCode = 405
-          res.end(JSON.stringify({ success: false, error: 'Method not allowed. Use POST.' }))
+          res.end(JSON.stringify({
+            success: false,
+            error: 'Method not allowed. Use POST.'
+          }))
         }
       })
     }
   }
 }
 
-// https://vite.dev/config/
 export default defineConfig({
+  base: '/computer-website/',
   plugins: [react(), contactApiPlugin()]
 })
-
