@@ -60,7 +60,15 @@ function contactApiPlugin() {
   }
 }
 
-export default defineConfig({
-  base: '/computer-website/',
-  plugins: [react(), contactApiPlugin()]
-})
+export default defineConfig(({ command, mode }) => {
+  // During local development (vite dev), base is '/' so that
+  // http://localhost:5173/ and direct routes (e.g. /about, /services, /contact) work directly on refresh.
+  // During production build (vite build) or preview, base is '/computer-website/' for GitHub Pages repository hosting.
+  const isProduction = mode === 'production' || command === 'build' || command === 'preview';
+  const base = process.env.VITE_BASE_PATH || (isProduction ? '/computer-website/' : '/');
+
+  return {
+    base,
+    plugins: [react(), contactApiPlugin()]
+  };
+});

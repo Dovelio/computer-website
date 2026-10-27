@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Icon from './Icon';
 import { BUSINESS_INFO } from '../data/businessInfo';
 import { getGeneralWhatsAppUrl } from '../utils/whatsapp';
+import logoImg from '../assets/images/logo.png';
 import '../styles/footer.css';
 
 const CURRENT_YEAR = new Date().getFullYear();
@@ -15,14 +16,21 @@ export default function Footer() {
         <div className="footer-grid">
           {/* Brand & Bio */}
           <div className="footer-brand">
-            <Link to="/" className="footer-logo">
+            <Link to="/" className="footer-logo" aria-label={`${BUSINESS_INFO.shortName} Homepage`}>
               <div className="footer-logo-wrapper">
                 <img
-                  src="/logo.png"
+                  src={`${import.meta.env.BASE_URL}logo.png`}
                   alt={`${BUSINESS_INFO.shortName} Logo`}
                   className="footer-logo-img"
                   width="44"
                   height="44"
+                  loading="lazy"
+                  decoding="async"
+                  onError={(e) => {
+                    if (logoImg && e.currentTarget.src !== logoImg) {
+                      e.currentTarget.src = logoImg;
+                    }
+                  }}
                 />
               </div>
               <span className="footer-brand-title">{BUSINESS_INFO.shortName}</span>

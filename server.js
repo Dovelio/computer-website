@@ -96,7 +96,12 @@ const server = http.createServer(async (req, res) => {
 
   // Serve static files from dist/ if available
   if (fs.existsSync(DIST_DIR)) {
-    let filePath = path.join(DIST_DIR, pathname);
+    // Support requests prefixed with /computer-website/ as well as root requests
+    const relativePath = pathname.startsWith('/computer-website/')
+      ? pathname.slice('/computer-website'.length)
+      : (pathname === '/computer-website' ? '/' : pathname);
+
+    let filePath = path.join(DIST_DIR, relativePath);
     if (fs.existsSync(filePath) && fs.statSync(filePath).isDirectory()) {
       filePath = path.join(filePath, 'index.html');
     }

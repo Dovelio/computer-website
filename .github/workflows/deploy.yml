@@ -42,6 +42,11 @@ jobs:
             echo "ERROR: Production HTML still references src/main.jsx"
             exit 1
           fi
+          if [ ! -f dist/404.html ]; then
+            echo "ERROR: dist/404.html is missing for GitHub Pages SPA routing"
+            exit 1
+          fi
+          echo "Verified dist/404.html exists for GitHub Pages client-side routing."
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

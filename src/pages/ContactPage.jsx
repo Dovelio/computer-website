@@ -5,7 +5,6 @@ import { SERVICES } from '../data/services';
 import { getGeneralWhatsAppUrl, getWhatsAppUrl } from '../utils/whatsapp';
 import {
   createPageAnimation,
-  animateSectionHeader,
   animateStaggerCards,
   animateFadeSlide,
   gsap
@@ -79,10 +78,6 @@ export default function ContactPage() {
       // 3. Form and Map Columns
       animateFadeSlide('.contact-grid', '.contact-form-card', -25);
       animateFadeSlide('.contact-grid', '.contact-info-col', 25, 0.15);
-
-      // 4. Final Section: Visiting FAQs Section Header & Cards Entrance
-      animateSectionHeader('.contact-faq-header');
-      animateStaggerCards('.contact-faq-grid', '.contact-faq-card', 0.12);
     });
   }, []);
 
@@ -547,7 +542,7 @@ export default function ContactPage() {
               )}
             </div>
 
-            {/* Map & Practical Visiting Details Column */}
+            {/* Map Column */}
             <div className="contact-info-col">
               {/* Google Map Card */}
               <div className="map-card">
@@ -566,103 +561,6 @@ export default function ContactPage() {
                   />
                 </div>
               </div>
-
-              {/* Landmark & Travel Directions Box */}
-              <div className="map-directions-box">
-                <h4>
-                  <Icon name="compass" size={18} />
-                  <span>How to Reach Our Center</span>
-                </h4>
-
-                <div className="directions-list">
-                  <div className="direction-item">
-                    <Icon name="map-pin" size={16} />
-                    <div>
-                      <strong>Address / Landmark: </strong>
-                      Rajiv Junction, Karungal - 629157, Kanyakumari District.
-                    </div>
-                  </div>
-
-                  <div className="direction-item">
-                    <Icon name="car" size={16} />
-                    <div>
-                      <strong>Parking: </strong>
-                      {BUSINESS_INFO.parking}.
-                    </div>
-                  </div>
-
-                  <div className="direction-item">
-                    <Icon name="credit-card" size={16} />
-                    <div>
-                      <strong>Accepted Payments: </strong>
-                      {BUSINESS_INFO.paymentMethods}.
-                    </div>
-                  </div>
-
-                  <div className="direction-item">
-                    <Icon name="printer" size={16} />
-                    <div>
-                      <strong>Express Printout Collection: </strong>
-                      {BUSINESS_INFO.advancePrintingHint}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. Practical Visiting FAQs (The Final Section of Contact Page) */}
-      <section className="section section-alt contact-faq-section" aria-label="Visiting Questions & Answers">
-        <div className="container">
-          <div className="section-header contact-faq-header">
-            <span className="section-badge">Common Questions</span>
-            <h2 className="section-title">Frequently Asked Questions</h2>
-            <p className="section-subtitle">
-              Quick answers about visiting our centre in Karungal, document submissions, and application processing.
-            </p>
-          </div>
-
-          <div className="contact-faq-grid">
-            <div className="contact-faq-card">
-              <h4>
-                <Icon name="check-circle" size={18} />
-                <span>Do I need to make an appointment before visiting?</span>
-              </h4>
-              <p>
-                No appointment is needed. You are welcome to walk into {BUSINESS_INFO.name} in Karungal any time during business hours ({BUSINESS_INFO.hours.weekdays}). Our staff will assist you directly.
-              </p>
-            </div>
-
-            <div className="contact-faq-card">
-              <h4>
-                <Icon name="check-circle" size={18} />
-                <span>Can I send files by WhatsApp or Email for printing?</span>
-              </h4>
-              <p>
-                Yes! You can WhatsApp your PDF documents, images, or resume to our helpline or email them to our address. Let us know whether you need B&W or Color prints, and they will be ready when you arrive.
-              </p>
-            </div>
-
-            <div className="contact-faq-card">
-              <h4>
-                <Icon name="check-circle" size={18} />
-                <span>What payment modes do you accept at the counter?</span>
-              </h4>
-              <p>
-                We accept all major UPI QR options (Google Pay, PhonePe, Paytm, BHIM), Cash, and Debit/Credit cards. Transparent receipts are provided for all transactions.
-              </p>
-            </div>
-
-            <div className="contact-faq-card">
-              <h4>
-                <Icon name="check-circle" size={18} />
-                <span>Can you help if I do not understand the portal questions?</span>
-              </h4>
-              <p>
-                Absolutely. Our technicians sit with you, translate the questions into your preferred local language, and ensure all entries are verified with you on screen before final submission.
-              </p>
             </div>
           </div>
         </div>

@@ -11,7 +11,7 @@ export const BUSINESS_INFO = {
   travelDivisionName: "Jose Tours & Travels",
   proprietor: "Tipton Jose D",
   shortName: "Jose Computers",
-  logo: "/logo.png",
+  logo: `${import.meta.env?.BASE_URL || '/'}logo.png`,
   tagline: "Education, Insurance, E-Sevai, CSC, Aadhar Centre & Jose Tours & Travels",
   experienceYears: "10+",
   establishedYear: "2014",

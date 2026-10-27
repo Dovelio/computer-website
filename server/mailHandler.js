@@ -97,7 +97,7 @@ export async function sendContactEmail(payload) {
   const smtpHost = process.env.SMTP_HOST || 'smtp.gmail.com';
   const smtpPort = parseInt(process.env.SMTP_PORT || '465', 10);
   const smtpSecure = process.env.SMTP_SECURE === 'true' || smtpPort === 465;
-  const recipientEmail = process.env.RECIPIENT_EMAIL || 'abishekrabin333@gmail.com';
+  const recipientEmail = process.env.RECIPIENT_EMAIL || 'josetravelskgl@gmail.com';
 
   if (!smtpUser || !smtpPass) {
     const err = new Error('Server SMTP credentials are not configured. Please check .env file.');
