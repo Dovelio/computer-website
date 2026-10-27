@@ -127,6 +127,10 @@
   flex-direction: column;
   gap: 1.25rem;
   margin-bottom: 2rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 /* Category Filter Tabs */
@@ -136,6 +140,10 @@
   justify-content: center;
   gap: 0.5rem;
   flex-wrap: wrap;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .category-tab-btn {
@@ -360,22 +368,67 @@
 
 @media (max-width: 768px) {
   .services-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .service-card {
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .category-tabs {
     justify-content: flex-start;
     overflow-x: auto;
-    padding-bottom: 0.4rem;
+    overflow-y: hidden;
+    padding-bottom: 0.5rem;
     flex-wrap: nowrap;
     -webkit-overflow-scrolling: touch;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    scrollbar-width: none;
+  }
+
+  .category-tabs::-webkit-scrollbar {
+    display: none;
   }
 
   .category-tab-btn {
     flex-shrink: 0;
   }
 
-  .search-input-wrap {
+  .services-search-row {
+    width: 100%;
     max-width: 100%;
+    min-width: 0;
+  }
+
+  .search-input-wrap {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .services-search-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .services-search-input {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 0.85rem;
+  }
+
+  .services-count-text {
+    font-size: 0.8rem;
+    text-align: left;
   }
 }
