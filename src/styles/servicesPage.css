@@ -13,6 +13,14 @@
   box-sizing: border-box;
 }
 
+#catalog {
+  scroll-margin-top: 90px;
+}
+
+.service-card {
+  scroll-margin-top: 110px;
+}
+
 /* Page Hero Banner */
 .page-hero-banner {
   background: linear-gradient(180deg, #f0f9fd 0%, #ffffff 100%);

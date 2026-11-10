@@ -97,11 +97,9 @@ export default function HomePage() {
 
           <div className="home-showcase-grid">
             {FEATURED_CATEGORIES.map((cat) => (
-              <Link
+              <div
                 key={cat.id}
-                to={cat.targetUrl || `/services?cat=${cat.id}`}
                 className="home-showcase-card"
-                aria-label={`Explore ${cat.title}`}
               >
                 <div className="home-showcase-img-wrap">
                   <img
@@ -116,12 +114,18 @@ export default function HomePage() {
                   <span className="home-showcase-tag">{cat.tag}</span>
                   <h3 className="home-showcase-title">{cat.title}</h3>
                   <p className="home-showcase-desc">{cat.description}</p>
-                  <div className="home-showcase-link">
-                    <span>{cat.linkText || 'View Category Services'}</span>
-                    <Icon name="arrow-right" size={16} />
+                  <div className="home-showcase-action">
+                    <Link
+                      to={cat.targetUrl || `/services?cat=${cat.id}#catalog`}
+                      className="home-showcase-btn"
+                      aria-label={`View ${cat.title} services`}
+                    >
+                      <span>{cat.linkText || 'View Service'}</span>
+                      <Icon name="arrow-right" size={16} className="btn-arrow-icon" />
+                    </Link>
                   </div>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
 

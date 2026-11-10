@@ -69,18 +69,17 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  transition: all var(--transition-normal);
+  transition: box-shadow var(--transition-normal), border-color var(--transition-normal);
   display: flex;
   flex-direction: column;
   box-shadow: var(--shadow-sm);
-  text-decoration: none;
   color: inherit;
+  cursor: default;
 }
 
 .home-showcase-card:hover {
-  transform: translateY(-4px);
   box-shadow: var(--shadow-md);
-  border-color: var(--color-brand);
+  border-color: var(--color-border-hover);
 }
 
 .home-showcase-img-wrap {
@@ -98,7 +97,7 @@
 }
 
 .home-showcase-card:hover .home-showcase-img {
-  transform: scale(1.04);
+  transform: scale(1.02);
 }
 
 .home-showcase-badge {
@@ -147,18 +146,71 @@
   flex-grow: 1;
 }
 
-.home-showcase-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.875rem;
-  font-weight: 700;
-  color: var(--color-brand);
+.home-showcase-action {
   margin-top: auto;
+  padding-top: 1.15rem;
+  border-top: 1px solid var(--color-border);
 }
 
-.home-showcase-card:hover .home-showcase-link {
-  color: var(--color-brand-hover);
+.home-showcase-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0.72rem 1.25rem;
+  background-color: var(--color-brand-light);
+  color: var(--color-brand-dark);
+  border: 1px solid var(--color-brand-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.25;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(32, 167, 219, 0.08);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.home-showcase-btn:hover {
+  background-color: var(--color-brand);
+  border-color: var(--color-brand);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(32, 167, 219, 0.35);
+  transform: translateY(-2px);
+}
+
+.home-showcase-btn:active {
+  transform: translateY(0) scale(0.985);
+  box-shadow: 0 2px 6px rgba(32, 167, 219, 0.2);
+}
+
+.home-showcase-btn:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 3px;
+}
+
+.home-showcase-btn .btn-arrow-icon {
+  display: inline-flex;
+  align-items: center;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.home-showcase-btn:hover .btn-arrow-icon {
+  transform: translateX(4px);
+  color: #ffffff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-showcase-btn,
+  .home-showcase-btn .btn-arrow-icon {
+    transition: none !important;
+    transform: none !important;
+  }
 }
 
 /* Popular Walk-in Services Grid */

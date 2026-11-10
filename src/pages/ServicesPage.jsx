@@ -220,23 +220,40 @@ export default function ServicesPage() {
   }, [visibleCount]);
 
   // Auto-scroll and highlight target service when arriving with ?service=... or ?focus=...
+  // Or auto-scroll to the services catalog when arriving with a category filter or #catalog hash
   useEffect(() => {
     const focusService = searchParams.get('service') || searchParams.get('focus');
-    if (!focusService) return;
 
-    const timer = setTimeout(() => {
-      const targetCard = document.getElementById(`service-${focusService}`);
-      if (targetCard) {
-        targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        targetCard.classList.add('service-card-focused');
-        const removeTimer = setTimeout(() => {
-          targetCard.classList.remove('service-card-focused');
-        }, 3200);
-        return () => clearTimeout(removeTimer);
-      }
-    }, 450);
+    if (focusService) {
+      const timer = setTimeout(() => {
+        const targetCard = document.getElementById(`service-${focusService}`);
+        if (targetCard) {
+          targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          targetCard.classList.add('service-card-focused');
+          const removeTimer = setTimeout(() => {
+            targetCard.classList.remove('service-card-focused');
+          }, 3200);
+          return () => clearTimeout(removeTimer);
+        }
+      }, 450);
 
-    return () => clearTimeout(timer);
+      return () => clearTimeout(timer);
+    }
+
+    // When navigating with a category filter (e.g. from Home page cards) or #catalog hash
+    const hasCategoryParam = searchParams.has('cat') && searchParams.get('cat') !== 'all';
+    const hasCatalogHash = typeof window !== 'undefined' && window.location.hash === '#catalog';
+
+    if (hasCategoryParam || hasCatalogHash) {
+      const timer = setTimeout(() => {
+        const catalogEl = document.getElementById('catalog');
+        if (catalogEl) {
+          catalogEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 350);
+
+      return () => clearTimeout(timer);
+    }
   }, [searchParams, activeCategory]);
 
   return (

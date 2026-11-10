@@ -23,8 +23,8 @@ export const FEATURED_CATEGORIES = [
     description: 'Expert, error-free guidance for Aadhaar, PAN, Patta/Chitta, EC, Land subdivision, UDYAM registration, revenue certificates, and CSC schemes.',
     imageKey: 'govt',
     count: '13+ Services',
-    targetUrl: '/services?cat=govt',
-    linkText: 'View Government Services'
+    targetUrl: '/services?cat=govt#catalog',
+    linkText: 'View Service'
   },
   {
     id: 'travel',
@@ -33,8 +33,8 @@ export const FEATURED_CATEGORIES = [
     description: 'Comprehensive international & domestic travel: Passport, Visa, Stamping, Attestation, Emigration, Medical, Flights & IRCTC train tickets.',
     imageKey: 'travel',
     count: '10 Services',
-    targetUrl: '/services?cat=travel',
-    linkText: 'View Travel Services'
+    targetUrl: '/services?cat=travel#catalog',
+    linkText: 'View Service'
   },
   {
     id: 'education',
@@ -43,8 +43,8 @@ export const FEATURED_CATEGORIES = [
     description: 'Online applications for TNEA, JEE, CUET, CLAT, NATA, CMC admissions, Bank exams, MRB, Post Office, Defense (Army/Navy), UGC NET & scholarships.',
     imageKey: 'education',
     count: '11+ Services',
-    targetUrl: '/services?cat=education',
-    linkText: 'View Education Services'
+    targetUrl: '/services?cat=education#catalog',
+    linkText: 'View Service'
   },
   {
     id: 'printing',
@@ -53,8 +53,8 @@ export const FEATURED_CATEGORIES = [
     description: 'Commercial laser printing, school/college project works & book binding, duplicate ID PVC smart cards, multi-page scanning, and lamination.',
     imageKey: 'printing',
     count: '10+ Services',
-    targetUrl: '/services?cat=printing',
-    linkText: 'View Printing Services'
+    targetUrl: '/services?cat=printing#catalog',
+    linkText: 'View Service'
   },
   {
     id: 'welfare',
@@ -64,7 +64,7 @@ export const FEATURED_CATEGORIES = [
     imageKey: 'govt',
     count: 'Welfare Schemes',
     targetUrl: '/services?cat=govt&service=unorganised-welfare',
-    linkText: 'View Welfare Services'
+    linkText: 'View Service'
   },
   {
     id: 'councils',
@@ -74,7 +74,7 @@ export const FEATURED_CATEGORIES = [
     imageKey: 'education',
     count: 'Council Portal',
     targetUrl: '/services?cat=education&service=council-registration',
-    linkText: 'View Registration Details'
+    linkText: 'View Service'
   }
 ];
 
