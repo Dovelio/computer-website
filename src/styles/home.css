@@ -398,8 +398,8 @@
   }
 
   .home-showcase-grid {
-    grid-template-columns: 1fr;
-    max-width: 540px;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 760px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -424,6 +424,13 @@
 
   .home-cta-buttons .btn {
     width: 100%;
+  }
+}
+
+@media (max-width: 680px) {
+  .home-showcase-grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
   }
 }
 

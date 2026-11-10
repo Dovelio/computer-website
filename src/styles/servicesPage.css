@@ -95,6 +95,56 @@
   flex-shrink: 0;
 }
 
+/* Mobile "See More" Pagination Button */
+.services-see-more-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  margin-top: 2.25rem;
+  padding: 0.5rem 0 1rem;
+  width: 100%;
+}
+
+.services-see-more-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 260px;
+  padding: 0.85rem 1.75rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 4px 14px rgba(32, 167, 219, 0.25);
+  transition: all var(--transition-normal);
+  cursor: pointer;
+}
+
+.services-see-more-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(32, 167, 219, 0.35);
+}
+
+.services-see-more-btn .see-more-icon {
+  transform: rotate(90deg);
+  transition: transform 0.25s ease;
+}
+
+.services-see-more-hint {
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+@media (min-width: 769px) {
+  .services-see-more-wrap {
+    display: none !important;
+  }
+}
+
 /* Document Checklist Section on Services Page */
 .doc-checklists-grid {
   display: grid;

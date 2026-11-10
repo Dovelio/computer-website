@@ -113,6 +113,12 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link to="/services?cat=govt&service=land-registration" className="footer-link">
+                  <Icon name="chevron-right" size={14} />
+                  <span>Patta / Chitta Services</span>
+                </Link>
+              </li>
+              <li>
                 <Link to="/services?cat=printing" className="footer-link">
                   <Icon name="chevron-right" size={14} />
                   <span>Laser Printing & Xerox</span>

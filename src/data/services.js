@@ -19,10 +19,12 @@ export const FEATURED_CATEGORIES = [
   {
     id: 'govt',
     title: 'Government & E-Sevai Documentation',
-    tag: 'Aadhaar • PAN • CSC • E-District • Insurance',
-    description: 'Expert, error-free guidance for government portal applications, renewals, CSC schemes, and certified downloads.',
+    tag: 'Aadhaar • PAN • Land & Patta • CSC • UDYAM',
+    description: 'Expert, error-free guidance for Aadhaar, PAN, Patta/Chitta, EC, Land subdivision, UDYAM registration, revenue certificates, and CSC schemes.',
     imageKey: 'govt',
-    count: '11 Services'
+    count: '13+ Services',
+    targetUrl: '/services?cat=govt',
+    linkText: 'View Government Services'
   },
   {
     id: 'travel',
@@ -30,23 +32,49 @@ export const FEATURED_CATEGORIES = [
     tag: 'Passport • Visa • Stamping • Attestation • Flight & Train',
     description: 'Comprehensive international & domestic travel: Passport, Visa, Stamping, Attestation, Emigration, Medical, Flights & IRCTC train tickets.',
     imageKey: 'travel',
-    count: '10 Services'
+    count: '10 Services',
+    targetUrl: '/services?cat=travel',
+    linkText: 'View Travel Services'
   },
   {
     id: 'education',
     title: 'Education & Admission Services',
-    tag: 'College Counseling • Job Exams • Scholarships',
-    description: 'Professional online counseling applications, competitive exam registrations, school/college scholarships, and university portal facilitation.',
+    tag: 'College Admissions • Entrance Exams • Govt Job Exams',
+    description: 'Online applications for TNEA, JEE, CUET, CLAT, NATA, CMC admissions, Bank exams, MRB, Post Office, Defense (Army/Navy), UGC NET & scholarships.',
     imageKey: 'education',
-    count: '7 Services'
+    count: '11+ Services',
+    targetUrl: '/services?cat=education',
+    linkText: 'View Education Services'
   },
   {
     id: 'printing',
     title: 'Printing & Computer Services',
-    tag: 'Color Laser • High-Speed Xerox • Lamination',
-    description: 'High-resolution document printing, multi-page scanning, online form submissions, and photo prints.',
+    tag: 'Color Laser • High-Speed Xerox • Project Works • PVC Cards',
+    description: 'Commercial laser printing, school/college project works & book binding, duplicate ID PVC smart cards, multi-page scanning, and lamination.',
     imageKey: 'printing',
-    count: '8 Services'
+    count: '10+ Services',
+    targetUrl: '/services?cat=printing',
+    linkText: 'View Printing Services'
+  },
+  {
+    id: 'welfare',
+    title: 'Tamil Nadu Unorganised Workers Welfare Board & E-Shram',
+    tag: 'TNUWW Board • E-Shram • Scholarships • Grants',
+    description: 'Official registration, renewal, children educational scholarships, marriage/maternity financial aid, pension assistance, and national E-Shram smart cards.',
+    imageKey: 'govt',
+    count: 'Welfare Schemes',
+    targetUrl: '/services?cat=govt&service=unorganised-welfare',
+    linkText: 'View Welfare Services'
+  },
+  {
+    id: 'councils',
+    title: 'Registration & Renewal',
+    tag: 'Indian & TN Nursing • Bar Council • Medical Councils',
+    description: 'Dedicated online application filing, verification, and renewal assistance for Indian Nursing Council (INC), TN Nursing Council, Bar Council, and Medical Councils.',
+    imageKey: 'education',
+    count: 'Council Portal',
+    targetUrl: '/services?cat=education&service=council-registration',
+    linkText: 'View Registration Details'
   }
 ];
 
@@ -71,6 +99,15 @@ export const POPULAR_HOME_SERVICES = [
     description: 'Fresh individual PAN, signature/photo updates, and instant e-PAN generation.'
   },
   {
+    id: 'land-patta-ec',
+    title: 'Patta, Chitta & Land EC Online',
+    category: 'Land & Registration',
+    turnaround: 'Instant Printout',
+    icon: 'file-text',
+    requirement: 'Title deed copy, survey number & sub-division details',
+    description: 'Computerized Patta, Chitta copy download, Encumbrance Certificate (EC), FMB sketches, and Patta transfer.'
+  },
+  {
     id: 'passport-travel-service',
     title: 'Passport Application & Slot Booking',
     category: 'Travel Services',
@@ -90,21 +127,21 @@ export const POPULAR_HOME_SERVICES = [
   },
   {
     id: 'college-admissions-service',
-    title: 'College Counseling & Admission Forms',
+    title: 'College Admissions & Entrance Forms',
     category: 'Education Services',
     turnaround: 'Verified Submission',
     icon: 'graduation-cap',
     requirement: 'Marksheets, TC, community certificate & photo',
-    description: 'Online applications for Engineering (TNEA), Arts & Science, Polytechnic, and ITI counseling.'
+    description: 'Online applications for Engineering (TNEA/JEE), Arts, Science, Medical/Nursing & entrance exams.'
   },
   {
-    id: 'irctc-tickets',
-    title: 'Train Ticket & Tatkaal Booking',
-    category: 'Travel Services',
-    turnaround: 'Instant Ticket Print',
-    icon: 'train',
-    requirement: 'Passenger names, age & ID details',
-    description: 'Confirmed seat booking across all IRCTC train classes with live PNR tracking.'
+    id: 'online-job-forms',
+    title: 'Govt Job & Competitive Exam Filing',
+    category: 'Education & Jobs',
+    turnaround: 'Careful Verification',
+    icon: 'clipboard-list',
+    requirement: 'Marksheets, photo, signature & thumb impression',
+    description: 'Error-free submissions for Banking, MRB, Post Office, Defense (Army/Navy), UGC NET & TNPSC.'
   },
   {
     id: 'urgent-laser-print',
@@ -114,15 +151,6 @@ export const POPULAR_HOME_SERVICES = [
     icon: 'printer',
     requirement: 'PDF via Pendrive, WhatsApp or Email',
     description: 'Crisp black & white and color laser printouts on 75/80 GSM bright paper.'
-  },
-  {
-    id: 'online-job-forms',
-    title: 'Govt Job & Exam Form Filing',
-    category: 'Education & Jobs',
-    turnaround: 'Careful Verification',
-    icon: 'clipboard-list',
-    requirement: 'Marksheets, photo & signature',
-    description: 'Error-free application submissions for TNPSC, SSC, Banking, Police & Central portals.'
   }
 ];
 
@@ -227,6 +255,36 @@ export const SERVICES = [
     requirements: 'Supporting certificates & drafted affidavit notes',
     turnaround: 'Same day typing',
     icon: 'folder-check'
+  },
+  {
+    id: 'unorganised-welfare',
+    category: 'govt',
+    title: 'Tamil Nadu Unorganised Workers Welfare Board & E-Shram',
+    tag: 'TNUWW Board & E-Shram Portal',
+    description: 'Complete assistance for Tamil Nadu Unorganised Workers Welfare Board (TNUWW) new registration, smart card renewals, educational scholarships for children (10th, 12th, ITI, Polytechnic & Degree), marriage/maternity assistance, natural death relief, pensions, and national E-Shram card generation.',
+    requirements: 'Aadhaar card, Ration card (family card), bank passbook copy, trade/union certification (or VAO proof), passport size photo & active mobile for OTP',
+    turnaround: 'Online submission acknowledgement',
+    icon: 'heart-handshake'
+  },
+  {
+    id: 'land-registration',
+    category: 'govt',
+    title: 'Land & Registration Services (Patta, Chitta, EC, FMB)',
+    tag: 'TNREGINET & Any-Time Patta',
+    description: 'Instant download of computerized Patta, Chitta, Encumbrance Certificate (EC), FMB field survey sketches, duplicate certified copies of registered land documents, online marriage registration, Patta name transfer, and Patta subdivision (உட்பிரிவு) applications.',
+    requirements: 'Title deed / sale deed document copy, survey number & subdivision details, previous patta copy & Aadhaar card',
+    turnaround: 'Instant download / Portal slip',
+    icon: 'file-text'
+  },
+  {
+    id: 'udyam-registration',
+    category: 'govt',
+    title: 'UDYAM MSME Business Registration',
+    tag: 'Ministry of MSME Portal',
+    description: 'Fresh online UDYAM registration certificate generation for micro, small, and medium enterprises, enterprise details corrections, address/bank updates, and NIC code modifications required for MSME bank loans and government subsidies.',
+    requirements: 'Proprietor / Partner Aadhaar card, PAN card, business bank passbook with IFSC code, and enterprise address proof',
+    turnaround: 'Instant filing & acknowledgement',
+    icon: 'briefcase'
   },
 
   // ==================== TRAVEL SERVICES (JOSE TOURS & TRAVELS) ====================
@@ -335,10 +393,10 @@ export const SERVICES = [
   {
     id: 'college-admissions',
     category: 'education',
-    title: 'School & College Online Admissions',
-    tag: 'TNEA Engineering, Arts & Medical Counseling',
-    description: 'Complete online application filing for Engineering (TNEA), Arts & Science colleges, Medical (NEET counseling registration), Polytechnic, ITI, and B.Ed admissions.',
-    requirements: '10th & 12th marksheets, Transfer Certificate (TC), Community Certificate & Aadhaar',
+    title: 'School & College Online Admissions & Entrance Exams',
+    tag: 'TNEA, JEE, CLAT, CUET, GATE, NATA, CMC',
+    description: 'Complete online application filing for Higher Education Admissions: Engineering (TNEA, JEE Mains), Central Universities (CUET), National Law (CLAT), Architecture (NATA), GATE (M.E/M.Tech), CMC Vellore nursing/paramedical admissions, TN Nursing Counselling, Polytechnic, ITI, B.Ed, and Arts & Science college admissions.',
+    requirements: '10th & 12th marksheets, Transfer Certificate (TC), Community Certificate, passport photos & Aadhaar',
     turnaround: 'Verified submission & printout',
     icon: 'graduation-cap'
   },
@@ -346,11 +404,31 @@ export const SERVICES = [
     id: 'competitive-exams',
     category: 'education',
     title: 'Competitive Exam & Govt Job Form Filing',
-    tag: 'UPSC, TNPSC, SSC, Banking, Police',
-    description: 'Error-free online application submissions for TNPSC (Group 1, 2, 4), UPSC, SSC (CGL, CHSL), Banking (IBPS, SBI), Railways (RRB), TRB, TET, and Police recruitment.',
-    requirements: 'Educational certificates, scanned passport photo, signature & Aadhaar',
+    tag: 'Banking, MRB, Post Office, Army, NET, TNPSC',
+    description: 'Error-free online application submissions for All Bank Exams (IBPS, SBI, RRB), Medical Services Recruitment Board (MRB), India Post GDS, Indian Army, Indian Navy, Indian Coast Guard, UGC NET, CSIR NET, CTET, TNPSC (Group 1, 2, 4), UPSC, SSC (CGL, CHSL), Railways (RRB), TRB, TET, and Police recruitment.',
+    requirements: 'Educational certificates, scanned passport photo, signature meeting portal specs & Aadhaar',
     turnaround: 'Complete verification before submit',
     icon: 'clipboard-list'
+  },
+  {
+    id: 'council-registration',
+    category: 'education',
+    title: 'Registration & Renewal (Professional Councils)',
+    tag: 'Nursing, Bar & Medical Councils',
+    description: 'Official online application filing and verification for Indian Nursing Council (INC), Tamil Nadu Nursing Council (TNC), Bar Council of Tamil Nadu and Puducherry (Advocate enrollment), Tamil Nadu Medical Council (Doctor / Medical Registration), and paramedical state board licensing and renewals.',
+    requirements: 'Original degree/diploma certificates, consolidated marksheets, internship / CRRI completion certificate, previous council registration certificate (for renewals) & Aadhaar card',
+    turnaround: 'Portal submission & verification slip',
+    icon: 'award'
+  },
+  {
+    id: 'employment-services',
+    category: 'education',
+    title: 'Employment Exchange Registration & Renewal',
+    tag: 'TN Employment Exchange Portal',
+    description: 'Online registration of candidate educational qualifications (SSLC, HSC, ITI, Diploma, Under Graduate, Post Graduate, B.Ed & Typing credentials) on the Tamil Nadu Employment Exchange portal, addition of newly acquired degrees, priority status claiming, and 3-year card renewal without lapses.',
+    requirements: 'Original educational marksheets (10th to degree), Transfer Certificate (TC), Community Certificate, Aadhaar card & previous employment card (for renewals)',
+    turnaround: 'Instant printed registration card',
+    icon: 'user-check'
   },
   {
     id: 'scholarship-services',
@@ -483,6 +561,26 @@ export const SERVICES = [
     requirements: 'Physical document or printed sheets',
     turnaround: '5 minutes per item',
     icon: 'layers'
+  },
+  {
+    id: 'project-works-binding',
+    category: 'printing',
+    title: 'School & College Project Works & Book Binding',
+    tag: 'Project Typing, Laser Print & Binding',
+    description: 'Professional computer typing and document formatting for school and college assignments, engineering project reports, thesis formatting, high-res color laser graphs/diagram printing, transparent front spiral binding, soft binding, and hard cover binding with gold foil lettering.',
+    requirements: 'Project draft via USB pendrive, WhatsApp, or rough written manuscript notes',
+    turnaround: 'Same-day completion',
+    icon: 'book-open'
+  },
+  {
+    id: 'duplicate-id-pvc',
+    category: 'printing',
+    title: 'Duplicate ID Card & PVC Smart Card Printing',
+    tag: 'PVC Smart Card • Water-Resistant',
+    description: 'Official portal retrieval and high-definition PVC smart card printing for lost or damaged government identification cards: Aadhaar PVC Card, PAN Card reprint, digital Voter ID (e-EPIC), Smart Ration Card, E-Shram Card, and student/employee IDs on thick, water-resistant CR-80 plastic cards with crisp barcode clarity.',
+    requirements: 'ID card number, portal acknowledgement slip, or registered mobile phone for OTP authentication',
+    turnaround: 'Ready in 5 – 10 minutes',
+    icon: 'credit-card'
   }
 ];
 
@@ -499,6 +597,14 @@ export const SERVICE_CHECKLISTS = [
       {
         service: 'New PAN Card Application',
         documents: ['Aadhaar Card (name and DOB must match)', '2 identical color passport photos (recent)', 'Mobile number for e-sign verification']
+      },
+      {
+        service: 'Land & Registration Services (Patta, Chitta, EC)',
+        documents: ['Original Title Deed / Sale Deed copy', 'Survey Number and Subdivision number', 'Previous Patta copy (if available)', 'Aadhaar Card of property owner']
+      },
+      {
+        service: 'TN Unorganised Workers Welfare Board & E-Shram',
+        documents: ['Original Aadhaar Card & Smart Ration Card copy', 'Bank Passbook showing IFSC code', 'Trade / Union verification letter or VAO certificate', 'Passport size color photograph']
       },
       {
         service: 'Vehicle & General Insurance Renewal',
@@ -537,7 +643,7 @@ export const SERVICE_CHECKLISTS = [
     icon: 'graduation-cap',
     items: [
       {
-        service: 'College & University Counseling (TNEA, Arts, Medical)',
+        service: 'College & University Admissions (TNEA, JEE, CUET, CMC)',
         documents: ['10th and 12th standard original marksheets', 'Transfer Certificate (TC) & Conduct Certificate', 'Community Certificate & First Graduate Certificate (if applicable)', 'Recent passport size photos']
       },
       {
@@ -545,12 +651,16 @@ export const SERVICE_CHECKLISTS = [
         documents: ['Degree / educational marksheets from 10th to graduation', 'Community/Caste certificate for quota claim', 'Scanned passport photo & signature meeting size requirements']
       },
       {
-        service: 'Student Scholarships (NSP, Post-Matric)',
-        documents: ['Current year fee receipt & college ID card', 'Income certificate of parent / guardian', 'Aadhaar-linked bank passbook showing IFSC code', 'Previous year marksheets']
+        service: 'Professional Council Registration & Renewal',
+        documents: ['Original Degree / Diploma provisional or convocation certificate', 'All semester original marksheets & Transfer Certificate', 'Internship / CRRI completion certificate', 'Previous registration certificate & renewal slip (for renewals)', 'Passport size photographs']
       },
       {
-        service: 'Distance Education Admissions',
-        documents: ['Original or provisional marksheets of qualifying exam', 'ID proof (Aadhaar/Voter ID)', 'Passport size photographs']
+        service: 'Employment Exchange Online Registration',
+        documents: ['All original marksheets from 10th standard upwards', 'Community Certificate & Transfer Certificate', 'Aadhaar card copy', 'Previous employment exchange card (for renewals)']
+      },
+      {
+        service: 'Student Scholarships (NSP, Post-Matric)',
+        documents: ['Current year fee receipt & college ID card', 'Income certificate of parent / guardian', 'Aadhaar-linked bank passbook showing IFSC code', 'Previous year marksheets']
       }
     ]
   },
@@ -561,6 +671,14 @@ export const SERVICE_CHECKLISTS = [
       {
         service: 'Laser Printing & Document Xerox',
         documents: ['Digital file in PDF, DOCX, or JPEG', 'Bring via USB pendrive, or email to our center address', 'Or send directly to our official WhatsApp helpline']
+      },
+      {
+        service: 'College Project Works & Book Binding',
+        documents: ['Project manuscript in Word / PDF or clear handwritten draft', 'College guidelines for font, margins, and cover page layout', 'Choice of binding: Spiral, Soft Cover, or Hard Bound with Gold Foil']
+      },
+      {
+        service: 'Duplicate ID Cards & PVC Smart Card Printing',
+        documents: ['Aadhaar number or registered mobile phone (active for OTP)', 'Voter EPIC number / PAN number / Ration card number', 'Original soft copy PDF (if available on WhatsApp/USB)']
       },
       {
         service: 'Document Scanning & Digitization',

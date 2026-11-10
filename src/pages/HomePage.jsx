@@ -99,7 +99,7 @@ export default function HomePage() {
             {FEATURED_CATEGORIES.map((cat) => (
               <Link
                 key={cat.id}
-                to={`/services?cat=${cat.id}`}
+                to={cat.targetUrl || `/services?cat=${cat.id}`}
                 className="home-showcase-card"
                 aria-label={`Explore ${cat.title}`}
               >
@@ -117,7 +117,7 @@ export default function HomePage() {
                   <h3 className="home-showcase-title">{cat.title}</h3>
                   <p className="home-showcase-desc">{cat.description}</p>
                   <div className="home-showcase-link">
-                    <span>View Category Services</span>
+                    <span>{cat.linkText || 'View Category Services'}</span>
                     <Icon name="arrow-right" size={16} />
                   </div>
                 </div>
@@ -127,7 +127,7 @@ export default function HomePage() {
 
           <div style={{ textAlign: 'center', marginTop: '2.5rem' }}>
             <Link to="/services" className="btn btn-primary btn-lg">
-              <span>View All 35+ Professional Services</span>
+              <span>View All 40+ Professional Services</span>
               <Icon name="arrow-right" size={18} />
             </Link>
           </div>

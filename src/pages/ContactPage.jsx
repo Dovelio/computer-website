@@ -402,7 +402,7 @@ export default function ContactPage() {
                       id="contact-phone"
                       name="phone"
                       className={`form-input ${errors.phone ? 'input-error' : ''}`}
-                      placeholder="e.g. 9442358907"
+                      placeholder="e.g. 9385768907"
                       value={formData.phone}
                       onChange={handleChange}
                       aria-required="true"

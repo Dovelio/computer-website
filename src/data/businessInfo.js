@@ -30,8 +30,8 @@ export const BUSINESS_INFO = {
   phoneLandline: "04651 - 290907",
   phoneLandlineRaw: "04651290907",
   
-  whatsappDisplay: "+91 94423 58907",
-  whatsappRaw: "919442358907",
+  whatsappDisplay: "+91 93857 68907",
+  whatsappRaw: "919385768907",
 
   email: "josetravelskgl@gmail.com",
   

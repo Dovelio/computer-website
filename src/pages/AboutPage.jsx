@@ -107,7 +107,7 @@ export default function AboutPage() {
               <div className="about-story-img-card">
                 <img
                   src={aboutImage}
-                  alt="Customer assistance desk, high-speed printers, and workstations at Jose Computers Karungal"
+                  alt="Jose Computer and Internet Center front office desk and customer workstations at Rajiv Junction, Karungal"
                   className="about-story-img"
                   width="560"
                   height="440"

@@ -27,6 +27,34 @@ export default function ServicesPage() {
 
   const [searchQuery, setSearchQuery] = useState('');
 
+  // Small screen detection (mobile breakpoint <= 768px)
+  const [isSmallScreen, setIsSmallScreen] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth <= 768;
+    }
+    return false;
+  });
+
+  const [visibleCount, setVisibleCount] = useState(10);
+  const prevCountRef = useRef(10);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 768px)');
+    const handleMediaChange = (e) => {
+      setIsSmallScreen(e.matches);
+    };
+
+    setIsSmallScreen(mediaQuery.matches);
+    mediaQuery.addEventListener('change', handleMediaChange);
+    return () => mediaQuery.removeEventListener('change', handleMediaChange);
+  }, []);
+
+  // Reset pagination count on category or search change
+  useEffect(() => {
+    setVisibleCount(10);
+    prevCountRef.current = 10;
+  }, [activeCategory, searchQuery]);
+
   const handleCategoryChange = (catId) => {
     if (catId === 'all') {
       searchParams.delete('cat');
@@ -66,6 +94,28 @@ export default function ServicesPage() {
       return inTitle || inDesc || inTag || inReq;
     });
   }, [activeCategory, searchQuery]);
+
+  // Handle deep-link to service: if target is beyond current visibleCount on mobile, expand to show it
+  useEffect(() => {
+    const focusService = searchParams.get('service') || searchParams.get('focus');
+    if (focusService) {
+      const targetIndex = filteredServices.findIndex((s) => s.id === focusService);
+      if (targetIndex >= 0 && targetIndex >= visibleCount) {
+        const needed = Math.ceil((targetIndex + 1) / 10) * 10;
+        setVisibleCount(needed);
+      }
+    }
+  }, [searchParams, filteredServices, visibleCount]);
+
+  // Compute displayed services (batches of 10 on mobile, full list on desktop)
+  const displayedServices = useMemo(() => {
+    if (!isSmallScreen) {
+      return filteredServices;
+    }
+    return filteredServices.slice(0, visibleCount);
+  }, [filteredServices, isSmallScreen, visibleCount]);
+
+  const hasMoreServices = isSmallScreen && visibleCount < filteredServices.length;
 
   // Page ScrollTrigger Setup
   useEffect(() => {
@@ -146,6 +196,49 @@ export default function ServicesPage() {
     );
   }, [activeCategory, searchQuery]);
 
+  // Animate newly revealed cards on small screen when clicking "See More"
+  useEffect(() => {
+    if (!gridRef.current || isReducedMotion()) return;
+    if (visibleCount > prevCountRef.current) {
+      const cards = gridRef.current.querySelectorAll('.service-card');
+      const newCards = Array.from(cards).slice(prevCountRef.current);
+      if (newCards.length) {
+        gsap.fromTo(
+          newCards,
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.4,
+            stagger: 0.04,
+            ease: 'power2.out'
+          }
+        );
+      }
+    }
+    prevCountRef.current = visibleCount;
+  }, [visibleCount]);
+
+  // Auto-scroll and highlight target service when arriving with ?service=... or ?focus=...
+  useEffect(() => {
+    const focusService = searchParams.get('service') || searchParams.get('focus');
+    if (!focusService) return;
+
+    const timer = setTimeout(() => {
+      const targetCard = document.getElementById(`service-${focusService}`);
+      if (targetCard) {
+        targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        targetCard.classList.add('service-card-focused');
+        const removeTimer = setTimeout(() => {
+          targetCard.classList.remove('service-card-focused');
+        }, 3200);
+        return () => clearTimeout(removeTimer);
+      }
+    }, 450);
+
+    return () => clearTimeout(timer);
+  }, [searchParams, activeCategory]);
+
   return (
     <div className="services-page" ref={pageRef}>
       {/* 1. Page Header Banner (No Breadcrumbs) */}
@@ -156,7 +249,7 @@ export default function ServicesPage() {
             Our Digital, Travel, Education & Printing Services
           </h1>
           <p className="page-hero-subtitle">
-            Explore 35+ professional services across government documentation, Jose Tours & Travels (Passport, Visa, Stamping, Attestation, Tickets), education admissions & competitive exams, and high-speed laser printing at Rajiv Junction, Karungal. Every service is backed by verified checklists and patient 1-on-1 assistance.
+            Explore 40+ professional services across government documentation, Jose Tours & Travels (Passport, Visa, Stamping, Attestation, Tickets), education admissions & competitive exams, and high-speed laser printing at Rajiv Junction, Karungal. Every service is backed by verified checklists and patient 1-on-1 assistance.
           </p>
         </div>
       </section>
@@ -189,7 +282,7 @@ export default function ServicesPage() {
                 <input
                   type="search"
                   className="services-search-input"
-                  placeholder="Search by keyword (e.g. Passport, Visa, Attestation, College, Aadhaar, PAN, train, laser print)..."
+                  placeholder="Search by keyword (e.g. Patta, Welfare, Nursing, Bank exam, Passport, Visa, Aadhaar, PAN, Binding)..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   aria-label="Search all services"
@@ -207,18 +300,38 @@ export default function ServicesPage() {
               </div>
 
               <span className="services-count-text">
-                Showing <strong>{filteredServices.length}</strong> of {SERVICES.length} services
+                Showing <strong>{isSmallScreen ? displayedServices.length : filteredServices.length}</strong> of {filteredServices.length} services
               </span>
             </div>
           </div>
 
           {/* Services Grid */}
           {filteredServices.length > 0 ? (
-            <div className="services-grid" ref={gridRef}>
-              {filteredServices.map((service) => (
-                <ServiceCard key={service.id} service={service} />
-              ))}
-            </div>
+            <>
+              <div className="services-grid" ref={gridRef}>
+                {displayedServices.map((service) => (
+                  <ServiceCard key={service.id} service={service} />
+                ))}
+              </div>
+
+              {/* Mobile "See More" Pagination Button */}
+              {hasMoreServices && (
+                <div className="services-see-more-wrap">
+                  <button
+                    type="button"
+                    className="btn btn-primary services-see-more-btn"
+                    onClick={() => setVisibleCount((prev) => prev + 10)}
+                    aria-label="See More Services"
+                  >
+                    <span>See More</span>
+                    <Icon name="chevron-right" size={16} className="see-more-icon" />
+                  </button>
+                  <span className="services-see-more-hint">
+                    Showing {displayedServices.length} of {filteredServices.length} services
+                  </span>
+                </div>
+              )}
+            </>
           ) : (
             <div className="services-empty-state">
               <Icon name="search" size={36} color="var(--color-text-muted)" />
