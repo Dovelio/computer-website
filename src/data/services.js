@@ -47,21 +47,11 @@ export const FEATURED_CATEGORIES = [
     linkText: 'View Service'
   },
   {
-    id: 'printing',
-    title: 'Printing & Computer Services',
-    tag: 'Color Laser • High-Speed Xerox • Project Works • PVC Cards',
-    description: 'Commercial laser printing, school/college project works & book binding, duplicate ID PVC smart cards, multi-page scanning, and lamination.',
-    imageKey: 'printing',
-    count: '10+ Services',
-    targetUrl: '/services?cat=printing#catalog',
-    linkText: 'View Service'
-  },
-  {
     id: 'welfare',
     title: 'Tamil Nadu Unorganised Workers Welfare Board & E-Shram',
     tag: 'TNUWW Board • E-Shram • Scholarships • Grants',
     description: 'Official registration, renewal, children educational scholarships, marriage/maternity financial aid, pension assistance, and national E-Shram smart cards.',
-    imageKey: 'govt',
+    imageKey: 'welfare',
     count: 'Welfare Schemes',
     targetUrl: '/services?cat=govt&service=unorganised-welfare',
     linkText: 'View Service'
@@ -71,9 +61,19 @@ export const FEATURED_CATEGORIES = [
     title: 'Registration & Renewal',
     tag: 'Indian & TN Nursing • Bar Council • Medical Councils',
     description: 'Dedicated online application filing, verification, and renewal assistance for Indian Nursing Council (INC), TN Nursing Council, Bar Council, and Medical Councils.',
-    imageKey: 'education',
+    imageKey: 'councils',
     count: 'Council Portal',
     targetUrl: '/services?cat=education&service=council-registration',
+    linkText: 'View Service'
+  },
+  {
+    id: 'printing',
+    title: 'Printing & Computer Services',
+    tag: 'Color Laser • High-Speed Xerox • Project Works • PVC Cards',
+    description: 'Commercial laser printing, school/college project works & book binding, duplicate ID PVC smart cards, multi-page scanning, and lamination.',
+    imageKey: 'printing',
+    count: '10+ Services',
+    targetUrl: '/services?cat=printing#catalog',
     linkText: 'View Service'
   }
 ];

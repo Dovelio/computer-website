@@ -13,20 +13,24 @@ import {
   gsap
 } from '../utils/animations';
 
-import serviceGovtImg from '../assets/images/service-govt.jpg';
-import serviceTravelImg from '../assets/images/service-travel.jpg';
-import serviceEducationImg from '../assets/images/service-education.jpg';
-import servicePrintingImg from '../assets/images/service-printing.jpg';
+import overviewGovtImg from '../assets/images/overview-govt.jpg';
+import overviewTravelImg from '../assets/images/overview-travel.jpg';
+import overviewEducationImg from '../assets/images/overview-education.jpg';
+import overviewWelfareImg from '../assets/images/overview-welfare.jpg';
+import overviewCouncilsImg from '../assets/images/overview-councils.jpg';
+import overviewPrintingImg from '../assets/images/overview-printing.jpg';
 import '../styles/home.css';
 
 export default function HomePage() {
   const pageRef = useRef(null);
 
   const categoryImages = {
-    govt: serviceGovtImg,
-    travel: serviceTravelImg,
-    education: serviceEducationImg,
-    printing: servicePrintingImg
+    govt: overviewGovtImg,
+    travel: overviewTravelImg,
+    education: overviewEducationImg,
+    welfare: overviewWelfareImg,
+    councils: overviewCouncilsImg,
+    printing: overviewPrintingImg
   };
 
   useEffect(() => {
