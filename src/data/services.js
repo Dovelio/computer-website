@@ -19,10 +19,10 @@ export const FEATURED_CATEGORIES = [
   {
     id: 'govt',
     title: 'Government & E-Sevai Documentation',
-    tag: 'Aadhaar • PAN • Land & Patta • CSC • UDYAM',
-    description: 'Expert, error-free guidance for Aadhaar, PAN, Patta/Chitta, EC, Land subdivision, UDYAM registration, revenue certificates, and CSC schemes.',
+    tag: 'Aadhaar • PAN • EPFO • Patta & Land • CSC Schemes',
+    description: 'Expert, error-free guidance for Aadhaar, PAN, EPFO & PF claims, Patta/Chitta, EC, Land subdivision, Life Certificates, UDYAM, and CSC schemes.',
     imageKey: 'govt',
-    count: '13+ Services',
+    count: '16+ Services',
     targetUrl: '/services?cat=govt#catalog',
     linkText: 'View Service'
   },
@@ -39,10 +39,10 @@ export const FEATURED_CATEGORIES = [
   {
     id: 'education',
     title: 'Education & Admission Services',
-    tag: 'College Admissions • Entrance Exams • Govt Job Exams',
-    description: 'Online applications for TNEA, JEE, CUET, CLAT, NATA, CMC admissions, Bank exams, MRB, Post Office, Defense (Army/Navy), UGC NET & scholarships.',
+    tag: 'Admissions • Entrance Exams • Educational Loan • Jobs',
+    description: 'Online applications for TNEA, JEE, CUET, CLAT, NATA, CMC admissions, Educational loans, Bank exams, MRB, Post Office, Defense, UGC NET & scholarships.',
     imageKey: 'education',
-    count: '11+ Services',
+    count: '12+ Services',
     targetUrl: '/services?cat=education#catalog',
     linkText: 'View Service'
   },
@@ -286,6 +286,36 @@ export const SERVICES = [
     turnaround: 'Instant filing & acknowledgement',
     icon: 'briefcase'
   },
+  {
+    id: 'epfo-services',
+    category: 'govt',
+    title: 'EPFO & Employee Provident Fund (PF) Services',
+    tag: 'EPFO • UAN • PF Withdrawal & KYC',
+    description: 'Complete online PF member assistance: UAN activation & generation, PF advance withdrawal (Form 31), full settlement (Form 19 & 10C), member passbook download, Aadhaar & bank KYC linking, PF transfer between employers, and e-Nomination filing.',
+    requirements: 'Universal Account Number (UAN), Aadhaar card linked with active OTP mobile, and bank passbook copy or cancelled cheque',
+    turnaround: 'Instant online filing & receipt',
+    icon: 'shield-check'
+  },
+  {
+    id: 'free-home-scheme',
+    category: 'govt',
+    title: 'Free Home Schemes (PMAY & Kalaignar Kanavu Illam)',
+    tag: 'Govt Housing • PMAY & State Schemes',
+    description: 'Online application filing and status tracking for Government Free Housing Schemes: Tamil Nadu Kalaignar Kanavu Illam (கலைஞர் கனவு இல்லம் திட்டம்), Pradhan Mantri Awas Yojana (PMAY Gramin & Urban), and rural housing subsidy portals.',
+    requirements: 'Land Patta / ownership documents, Smart Ration Card (Family Card), Aadhaar cards of family members, income certificate & bank passbook',
+    turnaround: 'Official portal submission receipt',
+    icon: 'home'
+  },
+  {
+    id: 'life-certificate',
+    category: 'govt',
+    title: 'Digital Life Certificate (Jeevan Pramaan for Pensioners)',
+    tag: 'Jeevan Pramaan • Biometric Life Certificate',
+    description: 'Aadhaar-based biometric digital life certificate generation (Jeevan Pramaan) for Central Government, State Government, Defense, and EPS-95 pensioners with instant Pramaan ID generation and direct submission to treasury/pension disbursing banks.',
+    requirements: 'Pension Payment Order (PPO) number, pension bank account passbook, Aadhaar card & physical walk-in for fingerprint scan',
+    turnaround: 'Ready in 5 – 10 minutes',
+    icon: 'user-check'
+  },
 
   // ==================== TRAVEL SERVICES (JOSE TOURS & TRAVELS) ====================
   {
@@ -480,6 +510,16 @@ export const SERVICES = [
     turnaround: 'Personal orientation available',
     icon: 'layers'
   },
+  {
+    id: 'educational-loan',
+    category: 'education',
+    title: 'Educational Loan Application Assistance',
+    tag: 'Vidya Lakshmi Portal & Govt Subsidies',
+    description: 'End-to-end guidance and online application filing on the Government Vidya Lakshmi Portal (NSDL / Protean), Central Sector Interest Subsidy (CSIS) schemes, state educational loan subsidies, and bank loan document preparation for higher studies in India and abroad.',
+    requirements: 'College admission allotment letter, formal fee structure, 10th & 12th marksheets, student & parent Aadhaar, PAN cards, income certificate & bank passbook',
+    turnaround: 'Portal registration & loan application copy',
+    icon: 'graduation-cap'
+  },
 
   // ==================== PRINTING & COMPUTER SERVICES ====================
   {
@@ -613,6 +653,18 @@ export const SERVICE_CHECKLISTS = [
       {
         service: 'E-District Revenue Certificates',
         documents: ['Ration Card / Family card copy', 'Aadhaar Cards of applicant & head of household', 'Salary certificate or Village Administrative Officer slip']
+      },
+      {
+        service: 'EPFO & PF Withdrawal Services',
+        documents: ['Universal Account Number (UAN) & Member Password', 'Aadhaar Card linked to active mobile for OTP', 'Bank passbook copy or cancelled cheque with name printed', 'PAN Card copy (for claims exceeding threshold limits)']
+      },
+      {
+        service: 'Digital Life Certificate (Jeevan Pramaan)',
+        documents: ['Pension Payment Order (PPO Number)', 'Pension disbursing bank account passbook details', 'Aadhaar Card of the pensioner', 'Active mobile phone for OTP', 'Physical walk-in for biometric fingerprint authentication']
+      },
+      {
+        service: 'Free Home Schemes (PMAY & Kalaignar Kanavu Illam)',
+        documents: ['Land Patta copy / title deed in beneficiary name', 'Smart Ration Card (Family Card copy)', 'Aadhaar Cards of all family members', 'Income Certificate & Nativity Certificate from E-Sevai', 'Bank passbook copy showing IFSC code']
       }
     ]
   },
@@ -661,6 +713,10 @@ export const SERVICE_CHECKLISTS = [
       {
         service: 'Student Scholarships (NSP, Post-Matric)',
         documents: ['Current year fee receipt & college ID card', 'Income certificate of parent / guardian', 'Aadhaar-linked bank passbook showing IFSC code', 'Previous year marksheets']
+      },
+      {
+        service: 'Educational Loan (Vidya Lakshmi Portal)',
+        documents: ['College admission allotment letter & formal fee structure', '10th, 12th and Degree original marksheets', 'Student & Parent/Guardian Aadhaar and PAN cards', 'Parent Income Certificate / Salary slips / IT returns', 'Bank account statement (last 6 months)']
       }
     ]
   },
@@ -694,7 +750,7 @@ export const SERVICE_CHECKLISTS = [
 
 // Center Milestones & Values for About Page
 export const ABOUT_MILESTONES = [
-  { value: '10+', label: 'Years in Service', hint: 'Serving our community at Rajiv Junction since 2014' },
+  { value: '15+', label: 'Years in Service', hint: 'Serving our community at Rajiv Junction with 15+ years of dedicated service' },
   { value: '30,000+', label: 'Applications Handled', hint: 'Error-free submissions across government, travel & education portals' },
   { value: '100%', label: 'Data Confidentiality', hint: 'Zero retention policy for personal files and IDs' },
   { value: '6 Days', label: 'Open Weekly', hint: 'Monday to Saturday with extended evening hours' }

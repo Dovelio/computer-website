@@ -129,7 +129,7 @@ export default function AboutPage() {
               </h2>
 
               <p className="about-story-lead">
-                Over the last decade, government departments, examination boards, and travel operators moved almost entirely online. For many in Karungal and nearby villages, this created confusion with complex English forms, strict file size limits, and portal payment gateway failures.
+                Over the last 15+ years, government departments, examination boards, and travel operators moved almost entirely online. For many in Karungal and nearby villages, this created confusion with complex English forms, strict file size limits, and portal payment gateway failures.
               </p>
 
               <p className="about-story-paragraph">
@@ -159,7 +159,7 @@ export default function AboutPage() {
         <div className="container">
           <div className="section-header about-section-header">
             <span className="section-badge">Proven Track Record</span>
-            <h2 className="section-title">A Decade of Real Results</h2>
+            <h2 className="section-title">15+ Years of Real Results</h2>
             <p className="section-subtitle">
               We take pride in our accuracy and consistent service to Karungal and neighboring villages across Kanyakumari.
             </p>

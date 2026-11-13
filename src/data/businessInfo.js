@@ -13,7 +13,7 @@ export const BUSINESS_INFO = {
   shortName: "Jose Computers",
   logo: `${import.meta.env?.BASE_URL || '/'}logo.png`,
   tagline: "Education, Insurance, E-Sevai, CSC, Aadhar Centre & Jose Tours & Travels",
-  experienceYears: "10+",
+  experienceYears: "15+",
   establishedYear: "2014",
 
   // About Summary
